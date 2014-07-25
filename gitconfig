@@ -1,0 +1,16 @@
+[user]
+	name = Max Hung
+	email = info@maxhung.co.nz
+	username = yummisashimi
+[core]
+	autocrlf = input
+	safecrlf = true
+	editor = /usr/local/bin/vim
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%C(yellow)%h %C(reset)%ad | %C(blue)%s%d %C(reset)[%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
