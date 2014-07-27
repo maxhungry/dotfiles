@@ -16,3 +16,5 @@
 	dump = cat-file -p
 [push]
 	default = simple
+[color]
+	ui = true
