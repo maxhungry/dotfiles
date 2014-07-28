@@ -92,3 +92,4 @@ something() {
         zle backward-word
 }
 zle -N something
+

@@ -60,6 +60,10 @@ filetype indent on "~/.vim/indent/ruby.vim
 set wildmenu "Somehow my wildmenu is already on?
 set lazyredraw "No redrawing during macros
 set showmatch
+" set visuals for 80 char wide
+" set textwidth=80
+" set colorcolumn=+1
+
 
 " Searching
 set incsearch "As char are entered
@@ -81,6 +85,9 @@ set foldlevel=1
 nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
+
+" :write before running commands
+set autowrite
 
 " Statusline
 " if has("statusline") && !&cp
@@ -115,6 +122,7 @@ nmap <CR> o<Esc>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
+
 " -------------------- Plugins --------------------
 " vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
