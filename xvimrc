@@ -1,0 +1,2 @@
+nmap <CR> o<Esc>
+map \c :pc<CR>
