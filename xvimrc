@@ -1,2 +1,3 @@
 nmap <CR> o<Esc>
 map \c :pc<CR>
+set ignorecase
