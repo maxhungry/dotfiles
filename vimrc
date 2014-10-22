@@ -1,6 +1,8 @@
+set nocompatible " be iMproved
+filetype off     " required!
+filetype plugin indent on
+
 " Vundle setup
-set nocompatible              " be iMproved, required
-filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -22,12 +24,33 @@ Plugin 'tpope/vim-rails'
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-projectionist'
+Plugin 'heartsentwined/vim-emblem'
+Plugin 'tpope/vim-haml'
+Plugin 'chrisbra/csv.vim'
+Plugin 'regedarek/ZoomWin'
+call vundle#end()
 
+" Numbers
+set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunction
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+nnoremap <C-n> :call NumberToggle()<cr>
 
+:au FocusLost * :set norelativenumber
+:au FocusGained * :set relativenumber
 
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
+
+" Refresh!
 map <leader>R :source ~/.vimrc<cr>
 
 "Colours!
@@ -56,7 +79,8 @@ set listchars+=precedes:<         " The character to show in the last column whe
 set number
 set showcmd "Suppose to show the last command entered at buttom right?
 set cursorline
-filetype indent on "~/.vim/indent/ruby.vim
+" filetype indent on "~/.vim/indent/ruby.vim
+" filetype on
 set wildmenu "Somehow my wildmenu is already on?
 set lazyredraw "No redrawing during macros
 set showmatch
@@ -141,6 +165,9 @@ set encoding=utf-8
 " set t_Co=256
 " set fillchars+=stl:\ ,stlnc:\
 " set term=xterm-256color
-set termencoding=utf-8
+" set termencoding=utf-8
 set laststatus=2
 let g:Powerline_symbols="fancy"
+
+" ZoomWin
+nnoremap <leader>z :ZoomWin<cr>
