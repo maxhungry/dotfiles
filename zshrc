@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion"
+ZSH_THEME="maxhung"
 
 # Example aliases
   # alias zshconfig="vim ~/.zshrc"
@@ -53,8 +53,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export PATH="$PATH:/usr/local/opt/sqlite/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+#
+export PATH="$PATH:/usr/local/opt/sqlite/bin:/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/lib/"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -85,6 +85,13 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 bindkey -v
 export KEYTIMEOUT=1
 
+# some keybindings
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^P" history-search-backward
+bindkey "^N" history-search-forward
+bindkey "^R" history-incremental-search-backward
+
 zle-line-init
 # zle-keymap-select
 
@@ -93,3 +100,18 @@ something() {
 }
 zle -N something
 
+# Allow '[' and ']' for rake tasks
+unsetopt nomatch
+
+# Enable color output
+autoload -U colors
+colors
+export CLICOLOR=1
+
+# Vim as visual editor
+export VISUAL=vim
+export EDITOR=$VISUAL
+
+alias ls='ls -GFh'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias s="spring"
