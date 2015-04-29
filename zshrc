@@ -54,12 +54,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #
-export PATH="$PATH:/usr/local/opt/sqlite/bin:/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/lib/"
+export PATH="$PATH:/usr/local/opt/sqlite/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_NZ.UTF-8
+export LC_ALL=en_NZ.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -115,3 +116,9 @@ export EDITOR=$VISUAL
 alias ls='ls -GFh'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias s="spring"
+
+if [ -f ~/.env_variables ]; then
+    source ~/.env_variables
+else
+    print ".env_variables Not Found"
+fi
