@@ -1,6 +1,5 @@
 set nocompatible " be iMproved
-filetype off     " required!
-filetype plugin indent on
+filetype off
 
 " Vundle setup
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -30,8 +29,18 @@ Plugin 'heartsentwined/vim-emblem'
 Plugin 'tpope/vim-haml'
 Plugin 'chrisbra/csv.vim'
 Plugin 'regedarek/ZoomWin'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-ragtag'
+Plugin 'flazz/vim-colorschemes'
+
 call vundle#end()
 
+filetype plugin indent on
+
+syntax enable
 " Numbers
 set relativenumber
 function! NumberToggle()
@@ -53,10 +62,12 @@ autocmd InsertLeave * :set relativenumber
 " Refresh!
 map <leader>R :source ~/.vimrc<cr>
 
-"Colours!
-syntax enable
+" Colours!
 set background=dark
 colorscheme solarized
+" solarized options
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
 
 " Whitespaces
 set nowrap                        " don't wrap lines
@@ -147,6 +158,9 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
 
+" bells
+set noerrorbells visualbell t_vb=
+
 " -------------------- Plugins --------------------
 " vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
@@ -171,3 +185,13 @@ let g:Powerline_symbols="fancy"
 
 " ZoomWin
 nnoremap <leader>z :ZoomWin<cr>
+
+" EasyAlign
+vmap <Enter> <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+
+" CtrlP
+let g:ctrlp_show_hidden = 1
+
+" handlebars
+let g:mustache_abbreviations = 1
