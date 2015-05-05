@@ -3,8 +3,7 @@
 	email = info@maxhung.co.nz
 	username = maxhungry
 [core]
-	autocrlf = input
-	safecrlf = true
+	autocrlf = false
 	editor = /usr/local/bin/vim
 [alias]
 	co = checkout
