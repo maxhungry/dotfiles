@@ -1,168 +1,238 @@
-set nocompatible " be iMproved
-filetype off
+" vim: set foldmethod=marker foldlevel=0:
+" ==============================================================================
+" VIM-PLUG {{{
+" ==============================================================================
 
-" Vundle setup
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ddollar/nerdcommenter'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'sjl/badwolf'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-rails'
-Plugin 'othree/html5.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-projectionist'
-Plugin 'heartsentwined/vim-emblem'
-Plugin 'tpope/vim-haml'
-Plugin 'chrisbra/csv.vim'
-Plugin 'regedarek/ZoomWin'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-ragtag'
-Plugin 'flazz/vim-colorschemes'
+" Colors
+Plug 'junegunn/seoul256.vim'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'flazz/vim-colorschemes'
+"
 
-call vundle#end()
+" Edit
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-emoji'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
+" Naving
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jeetsukumaran/vim-buffergator'
+" Plug 'kien/ctrlp.vim'
+Plug 'regedarek/ZoomWin'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-projectionist'
+
+" Lang
+Plug 'chrisbra/csv.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/html5.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+
+" Others
+Plug 'mileszs/ack.vim'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+" }}}
+" ==============================================================================
+" GENERAL SETTINGS {{{
+" ==============================================================================
 filetype plugin indent on
-
 syntax enable
-" Numbers
+
+let g:seoul256_background = 235
+colorscheme seoul256
+
+set encoding=utf-8
+set laststatus=2
+set number
 set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunction
+set showcmd
+set cursorline
+set wildmenu
+set lazyredraw "No redrawing during macros
+set showmatch
+set textwidth=0
+if exists('&colorcolumn')
+  set colorcolumn=81
+endif
+set completeopt=menuone,preview,longest
+set scrolloff=5
+set autoread
+set clipboard=unnamed
+" set t_Co=256
+" set fillchars+=stl:\ ,stlnc:\
+" set term=xterm-256color
+" set termencoding=utf-8
 
-nnoremap <C-n> :call NumberToggle()<cr>
+" bells
+set noerrorbells visualbell t_vb=
 
-:au FocusLost * :set norelativenumber
-:au FocusGained * :set relativenumber
-
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-
-" Refresh!
-map <leader>R :source ~/.vimrc<cr>
-
-" Colours!
-set background=dark
-colorscheme solarized
-" solarized options
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-
-" Whitespaces
-set nowrap                        " don't wrap lines
+set nowrap
 set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an a<utoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
 
-" List chars
 set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the left of the screen
+set listchars=tab:\ \             " a tab should display as "  "
+set listchars+=trail:.
+set listchars+=extends:>
+set listchars+=precedes:<
 
-"UI
-set number
-set showcmd "Suppose to show the last command entered at buttom right?
-set cursorline
-" filetype indent on "~/.vim/indent/ruby.vim
-" filetype on
-set wildmenu "Somehow my wildmenu is already on?
-set lazyredraw "No redrawing during macros
-set showmatch
-" set visuals for 80 char wide
-" set textwidth=80
-" set colorcolumn=+1
-
-
-" Searching
-set incsearch "As char are entered
+set incsearch  " as char are entered
 set hlsearch
-set ignorecase  " searches are case insensitive...
-set smartcase   " ... unless they contain at least one capital letter
-" turn off search highlight
-nnoremap <silent> <c-l> :nohlsearch<cr>
+set ignorecase " searches are case insensitive,
+set smartcase  " unless they contain at least one capital letter
 
-
-" Folding
 set nofoldenable
 " set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 set foldlevel=1
 
-" Movement
-nnoremap j gj
-nnoremap k gk
-nnoremap gV `[v`]
-
-" :write before running commands
-set autowrite
-
-" Statusline
-" if has("statusline") && !&cp
-"   set laststatus=2  " always show the status bar
-
-"   " Start the status line
-"   set statusline=%f\ %m\ %r
-"   set statusline+=Line:%l/%L[%p%%]
-"   set statusline+=Col:%v
-"   set statusline+=Buf:#%n
-"   set statusline+=[%b][0x%B]
-" endif
-
-" Backup
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
-" -------------------- Misc --------------------
+set ttymouse=xterm2
+set mouse=a
+
+set nostartofline
 set history=10000
 
-" use % to match in ruby blocks, do-end, def-end etc
-runtime! macros/matchit.vim
+
+" }}}
+" ==============================================================================
+" MAPPINGS {{{
+" ==============================================================================
+" Movement
+nnoremap j gj
+nnoremap gV `[v`]
+nnoremap k gk
+
+" Make Y behave like other capitals (ref: junegunn)
+nnoremap Y y$
+
+" qq to record, Q to replay (ref: junegunn)
+nnoremap Q @q
+
+" ------------------------------------------------------------------------------
+" <tab> / <s-tab> | Circular windows navigation (ref: junegunn)
+" ------------------------------------------------------------------------------
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>W
+
+" Toggle reativenumber in insert mode
+" :au FocusLost * :set norelativenumber
+" :au FocusGained * :set relativenumber
+" autocmd InsertEnter * :set norelativenumber
+" autocmd InsertLeave * :set relativenumber
+
+" turn off search highlight
+nnoremap <silent> <c-l> :nohlsearch<cr>
+
+" Refresh
+noremap <leader>R :source ~/.vimrc<cr>
 
 " Run current ruby file
 map <leader>r :!ruby %<cr>
+nnoremap <CR> o<Esc>
 
-" nmap <s-CR> O<Esc>
-nmap <CR> o<Esc>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
 
-" bells
-set noerrorbells visualbell t_vb=
+" from junegunn - github.com/junegunn/dotfiles
+" ------------------------------------------------------------------------------
+" <F8> | Color scheme selector
+" ------------------------------------------------------------------------------
+function! s:rotate_colors()
+  if !exists('s:colors_list')
+    let s:colors_list =
+    \ sort(map(
+    \   filter(split(globpath(&rtp, "colors/*.vim"), "\n"), 'v:val !~ "^/usr/"'),
+    \   "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"))
+  endif
+  if !exists('s:colors_index')
+    let s:colors_index = index(s:colors_list, g:colors_name)
+  endif
+  let s:colors_index = (s:colors_index + 1) % len(s:colors_list)
+  let name = s:colors_list[s:colors_index]
+  execute 'colorscheme' name
+  redraw
+  echo name
+endfunction
+nnoremap <F8> :call <SID>rotate_colors()<cr>
 
-" -------------------- Plugins --------------------
+" ------------------------------------------------------------------------------
+" <tab> / <s-tab> / <c-v><tab> | super-duper-tab
+" ------------------------------------------------------------------------------
+function! s:can_complete(func, prefix)
+if empty(a:func) || call(a:func, [1, '']) < 0
+return 0
+endif
+let result = call(a:func, [0, matchstr(a:prefix, '\k\+$')])
+return !empty(type(result) == type([]) ? result : result.words)
+endfunction
+function! s:super_duper_tab(k, o)
+if pumvisible()
+return a:k
+endif
+let line = getline('.')
+let col = col('.') - 2
+if empty(line) || line[col] !~ '\k\|[/~.]' || line[col + 1] =~ '\k'
+return a:o
+endif
+let prefix = expand(matchstr(line[0:col], '\S*$'))
+if prefix =~ '^[~/.]'
+return "\<c-x>\<c-f>"
+endif
+if s:can_complete(&omnifunc, prefix)
+return "\<c-x>\<c-o>"
+endif
+if s:can_complete(&completefunc, prefix)
+return "\<c-x>\<c-u>"
+endif
+return a:k
+endfunction
+inoremap <expr> <tab>   <SID>super_duper_tab("\<c-n>", "\<tab>")
+inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
+" }}}
+" ==============================================================================
+" PLUGINS {{{
+" ==============================================================================
+
+" ------------------------------------------------------------------------------
+" vim-fugitive
+" ------------------------------------------------------------------------------
+nmap <Leader>g :Gstatus<CR>gg<c-n>
+nmap <Leader>d :Gdiff<CR>
+
+" ------------------------------------------------------------------------------
 " vim-tmux-navigator
+" ------------------------------------------------------------------------------
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <Esc>h :TmuxNavigateLeft<cr>
 nnoremap <silent> <Esc>j :TmuxNavigateDown<cr>
@@ -170,28 +240,48 @@ nnoremap <silent> <Esc>k :TmuxNavigateUp<cr>
 nnoremap <silent> <Esc>l :TmuxNavigateRight<cr>
 nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 
+" ------------------------------------------------------------------------------
 " NERDtree
+" ------------------------------------------------------------------------------
 " set autochdir
 " let NERDTreeChDirMode=2
 nnoremap <leader>n :NERDTreeToggle<cr>
-" set guifont=Inconsolata\ for\ Powerline:h15
-set encoding=utf-8
-" set t_Co=256
-" set fillchars+=stl:\ ,stlnc:\
-" set term=xterm-256color
-" set termencoding=utf-8
-set laststatus=2
+
 let g:Powerline_symbols="fancy"
 
+" ------------------------------------------------------------------------------
 " ZoomWin
+" ------------------------------------------------------------------------------
 nnoremap <leader>z :ZoomWin<cr>
 
+" ------------------------------------------------------------------------------
 " EasyAlign
+" ------------------------------------------------------------------------------
 vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 
+" ------------------------------------------------------------------------------
 " CtrlP
+" ------------------------------------------------------------------------------
 let g:ctrlp_show_hidden = 1
 
+" ------------------------------------------------------------------------------
 " handlebars
+" ------------------------------------------------------------------------------
 let g:mustache_abbreviations = 1
+
+" ------------------------------------------------------------------------------
+" gundo
+" ------------------------------------------------------------------------------
+nnoremap <F5> :GundoToggle<CR>
+
+" ------------------------------------------------------------------------------
+" matchit.vim
+" ------------------------------------------------------------------------------
+runtime! macros/matchit.vim
+
+" ------------------------------------------------------------------------------
+" matchit.vim
+" ------------------------------------------------------------------------------
+set completefunc=emoji#complete
+" }}}
