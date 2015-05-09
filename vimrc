@@ -12,6 +12,8 @@ Plug 'junegunn/seoul256.vim'
 " Plug 'flazz/vim-colorschemes'
 "
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+
 " Edit
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -284,4 +286,43 @@ runtime! macros/matchit.vim
 " matchit.vim
 " ------------------------------------------------------------------------------
 set completefunc=emoji#complete
+
+" ----------------------------------------------------------------------------
+" Open files
+" ----------------------------------------------------------------------------
+nnoremap <silent> <Leader><Leader> :FZF -m<CR>
+
+" ----------------------------------------------------------------------------
+" Choose color scheme
+" ----------------------------------------------------------------------------
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':     'colo',
+\   'options':  '+m',
+\   'left':     30,
+\   'launcher': 'iterm2-launcher 20 30 %s'
+\ })<CR>
+
+" ----------------------------------------------------------------------------
+" Select buffer
+" ----------------------------------------------------------------------------
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
 " }}}

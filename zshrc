@@ -122,3 +122,4 @@ if [ -f ~/.env_variables ]; then
 else
     print ".env_variables Not Found"
 fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
