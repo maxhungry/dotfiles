@@ -71,9 +71,9 @@ set wildmenu
 set lazyredraw "No redrawing during macros
 set showmatch
 set textwidth=0
-if exists('&colorcolumn')
-  set colorcolumn=81
-endif
+" if exists('&colorcolumn')
+"   set colorcolumn=81
+" endif
 set completeopt=menuone,preview,longest
 set scrolloff=5
 set autoread
