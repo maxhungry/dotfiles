@@ -152,9 +152,6 @@ nnoremap <S-tab> <c-w>W
 " autocmd InsertEnter * :set norelativenumber
 " autocmd InsertLeave * :set relativenumber
 
-" turn off search highlight
-nnoremap <silent> <c-l> :nohlsearch<cr>
-
 " Refresh
 noremap <leader>R :source ~/.vimrc<cr>
 
