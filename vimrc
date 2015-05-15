@@ -140,6 +140,12 @@ nnoremap Y y$
 " qq to record, Q to replay (ref: junegunn)
 nnoremap Q @q
 
+" Save
+nnoremap <leader>s :update<cr>
+
+" Quit
+nnoremap <leader>q :quit<cr>
+
 " ------------------------------------------------------------------------------
 " <tab> / <s-tab> | Circular windows navigation (ref: junegunn)
 " ------------------------------------------------------------------------------
