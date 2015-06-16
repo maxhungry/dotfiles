@@ -60,6 +60,8 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 
+let mapleader = ' '
+let maplocalleader = ' '
 let g:seoul256_background = 235
 colorscheme seoul256
 
