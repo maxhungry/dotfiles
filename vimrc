@@ -30,7 +30,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
-" Plug 'kien/ctrlp.vim'
 Plug 'regedarek/ZoomWin'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
