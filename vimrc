@@ -7,12 +7,8 @@ call plug#begin('~/.vim/plugged')
 
 " Colors
 Plug 'junegunn/seoul256.vim'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'flazz/vim-colorschemes'
-"
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'flazz/vim-colorschemes'
 
 " Edit
 Plug 'jiangmiao/auto-pairs'
@@ -25,9 +21,16 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'osyo-manga/vim-over'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --omnisharp-completer' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'rhysd/clever-f.vim'
 
 " Naving
-Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'regedarek/ZoomWin'
@@ -36,7 +39,9 @@ Plug 'tpope/vim-projectionist'
 
 " Lang
 Plug 'chrisbra/csv.vim'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
@@ -44,6 +49,8 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'elixir-lang/vim-elixir'
 
 " Others
 Plug 'mileszs/ack.vim'
@@ -74,6 +81,7 @@ set wildmenu
 set lazyredraw "No redrawing during macros
 set showmatch
 set textwidth=0
+set regexpengine=1
 " if exists('&colorcolumn')
 "   set colorcolumn=81
 " endif
@@ -109,9 +117,9 @@ set smartcase  " unless they contain at least one capital letter
 
 set nofoldenable
 " set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent
-set foldlevel=1
+" set foldnestmax=10
+" set foldmethod=indent
+" set foldlevel=1
 
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -146,6 +154,9 @@ nnoremap <leader>s :update<cr>
 
 " Quit
 nnoremap <leader>q :quit<cr>
+
+" Go to last file
+nnoremap <leader><leader> <c-^>
 
 " ------------------------------------------------------------------------------
 " <tab> / <s-tab> | Circular windows navigation (ref: junegunn)
@@ -226,6 +237,7 @@ endfunction
 inoremap <expr> <tab>   <SID>super_duper_tab("\<c-n>", "\<tab>")
 inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
 " }}}
+
 " ==============================================================================
 " PLUGINS {{{
 " ==============================================================================
@@ -252,8 +264,6 @@ nnoremap <silent> <Esc>\ :TmuxNavigatePrevious<cr>
 " set autochdir
 " let NERDTreeChDirMode=2
 nnoremap <leader>n :NERDTreeToggle<cr>
-
-let g:Powerline_symbols="fancy"
 
 " ------------------------------------------------------------------------------
 " ZoomWin
@@ -294,7 +304,7 @@ set completefunc=emoji#complete
 " ----------------------------------------------------------------------------
 " Open files
 " ----------------------------------------------------------------------------
-nnoremap <silent> <Leader><Leader> :FZF -m<CR>
+nnoremap <silent> <Leader>o :FZF -m<CR>
 
 " ----------------------------------------------------------------------------
 " Choose color scheme
@@ -329,4 +339,30 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \   'options': '+m',
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
+
+" ----------------------------------------------------------------------------
+" Airline
+" ----------------------------------------------------------------------------
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
+" let g:airline#extensions#tabline#enabled = 1
+
+" ----------------------------------------------------------------------------
+" Vim-over
+" ----------------------------------------------------------------------------
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+
+function! VisualFindAndReplace()
+  :OverCommandLine%s/
+endfunction
+
+function! VisualFindAndReplaceWithSelection() range
+  :'<,'>OverCommandLine s/
+endfunction
+
+" ----------------------------------------------------------------------------
+" Vim-over
+" ----------------------------------------------------------------------------
+let g:ycm_register_as_syntastic_checker = 0
 " }}}
