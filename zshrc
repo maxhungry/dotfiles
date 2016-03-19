@@ -48,7 +48,7 @@ ZSH_THEME="maxhung"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git z tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,13 +113,19 @@ export CLICOLOR=1
 export VISUAL=vim
 export EDITOR=$VISUAL
 
+# Alias
 alias ls='ls -GFh'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias s="spring"
+alias emb="./node_modules/.bin/ember"
 
+# env vars
 if [ -f ~/.env_variables ]; then
     source ~/.env_variables
 else
     print ".env_variables Not Found"
 fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
