@@ -60,7 +60,7 @@ export PATH="$PATH:/usr/local/opt/sqlite/bin:/usr/local/bin:/usr/bin:/bin:/usr/s
 
 # You may need to manually set your language environment
 export LANG=en_NZ.UTF-8
-export LC_ALL=en_NZ.UTF-8
+# export LC_ALL=en_NZ.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -117,7 +117,7 @@ export EDITOR=$VISUAL
 alias ls='ls -GFh'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias s="spring"
-alias emb="./node_modules/.bin/ember"
+alias ember="./node_modules/.bin/ember"
 
 # env vars
 if [ -f ~/.env_variables ]; then
