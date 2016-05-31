@@ -29,7 +29,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'rhysd/clever-f.vim'
 
 " Naving
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -39,7 +40,6 @@ Plug 'tpope/vim-projectionist'
 
 " Lang
 Plug 'chrisbra/csv.vim'
-" Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script'
@@ -51,9 +51,10 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'elixir-lang/vim-elixir'
+Plug 'ngmy/vim-rubocop'
 
 " Others
-Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-fugitive'
 
@@ -173,8 +174,6 @@ nnoremap <S-tab> <c-w>W
 " Refresh
 noremap <leader>R :source ~/.vimrc<cr>
 
-" Run current ruby file
-map <leader>r :!ruby %<cr>
 nnoremap <CR> o<Esc>
 
 nnoremap <leader>d "_d
@@ -365,4 +364,20 @@ endfunction
 " Vim-over
 " ----------------------------------------------------------------------------
 let g:ycm_register_as_syntastic_checker = 0
+" }}}
+
+" ----------------------------------------------------------------------------
+" Syntastic
+" ----------------------------------------------------------------------------
+" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }}}
+
+" ----------------------------------------------------------------------------
+" RuboCop
+" ----------------------------------------------------------------------------
+nmap <Leader>r :RuboCop<CR>
 " }}}
