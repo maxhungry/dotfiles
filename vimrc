@@ -27,6 +27,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --omnisha
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rhysd/clever-f.vim'
+Plug 'jszakmeister/vim-togglecursor'
 
 " Naving
 Plug 'vim-airline/vim-airline'
@@ -371,7 +372,7 @@ let g:ycm_register_as_syntastic_checker = 0
 " ----------------------------------------------------------------------------
 " let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " }}}
@@ -380,4 +381,12 @@ let g:syntastic_check_on_wq = 0
 " RuboCop
 " ----------------------------------------------------------------------------
 nmap <Leader>r :RuboCop<CR>
+" }}}
+
+" ----------------------------------------------------------------------------
+" vim-togglecursor
+" ----------------------------------------------------------------------------
+let g:togglecursor_default = 'block'
+let g:togglecursor_insert = 'line'
+let g:togglecursor_replace = 'underline'
 " }}}
