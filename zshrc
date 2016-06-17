@@ -21,7 +21,6 @@ setopt NO_BEEP
 
 # You may need to manually set your language environment
 export LANG=en_NZ.UTF-8
-# export LC_ALL=en_NZ.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
