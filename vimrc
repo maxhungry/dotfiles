@@ -5,59 +5,62 @@
 
 call plug#begin('~/.vim/plugged')
 
-" Colors
-Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'flazz/vim-colorschemes'
-
 " Edit
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --omnisharp-completer' }
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'jiangmiao/auto-pairs'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-emoji'
 Plug 'mattn/emmet-vim'
+Plug 'osyo-manga/vim-over'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-capslock'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-abolish'
-Plug 'osyo-manga/vim-over'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --omnisharp-completer' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'rhysd/clever-f.vim'
-Plug 'jszakmeister/vim-togglecursor'
 
 " Naving
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'regedarek/ZoomWin'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Lang
 Plug 'chrisbra/csv.vim'
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'elixir-lang/vim-elixir'
+Plug 'gorodinskiy/vim-coloresque'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'ngmy/vim-rubocop'
 Plug 'othree/html5.vim'
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'elixir-lang/vim-elixir'
-Plug 'ngmy/vim-rubocop'
 
 " Others
+Plug 'altercation/vim-colors-solarized'
+Plug 'flazz/vim-colorschemes'
+Plug 'junegunn/seoul256.vim'
 Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-fugitive'
+
 
 call plug#end()
 
