@@ -1,15 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="maxhung"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
+ZSH_THEME="agnoster_mod"
 HIST_STAMPS="dd/mm/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/.omz-custom
 
 plugins=(git z tmux colored-man-pages)
 
@@ -19,7 +13,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 setopt NO_BEEP
 
-# You may need to manually set your language environment
 export LANG=en_NZ.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -35,15 +28,11 @@ export LANG=en_NZ.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# [[ $TERM = "screen" ]] && rvm use default
-
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # Vim integration
 bindkey -v
 export KEYTIMEOUT=1
 
-# some keybindings
+#keybindings
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^P" history-search-backward
