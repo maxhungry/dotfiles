@@ -57,6 +57,7 @@ export EDITOR=$VISUAL
 # Alias
 alias ls='ls -GFh'
 alias ember="./node_modules/.bin/ember"
+alias git=hub
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
