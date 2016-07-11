@@ -5,7 +5,7 @@ ZSH_THEME="agnoster_mod"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
-plugins=(git z tmux colored-man-pages)
+plugins=(git bundler z tmux colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
