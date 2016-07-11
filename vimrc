@@ -38,7 +38,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Lang
 Plug 'chrisbra/csv.vim'
 Plug 'elixir-lang/vim-elixir'
-Plug 'gorodinskiy/vim-coloresque'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'ngmy/vim-rubocop'
