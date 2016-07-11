@@ -32,6 +32,7 @@ brew bundle --file=- <<EOF
   cask 'seil'
   cask 'sketch'
   cask 'spotify'
+  cask 'slack'
   cask 'vagrant'
 
   mas 'The Unarchiver', id: 425424353
@@ -39,7 +40,6 @@ brew bundle --file=- <<EOF
   mas 'Kindle', id: 405399194
   mas 'Nozio', id: 928871589
   mas 'Pocket', id: 568494494
-  mas 'Slack', id: 803453959
   mas 'Icon Slate', id: 439697913
   mas 'OmniFocus', id: 867299399
   mas 'Pixelmator', id: 407963104
