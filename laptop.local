@@ -32,6 +32,7 @@ brew bundle --file=- <<EOF
   cask 'seil'
   cask 'sketch'
   cask 'spotify'
+  cask 'skype'
   cask 'slack'
   cask 'vagrant'
 
