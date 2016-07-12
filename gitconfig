@@ -3,7 +3,7 @@
 	email = info@maxhung.co.nz
 	username = maxhungry
 [core]
-	autocrlf = false
+	autocrlf = input
 	editor = /usr/local/bin/vim
 	excludesfile = ~/.gitignore
 [alias]
