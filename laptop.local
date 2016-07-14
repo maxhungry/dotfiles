@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Show hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+
 brew bundle --file=- <<EOF
   brew 'nvm'
   brew 'rbenv-ctags'
