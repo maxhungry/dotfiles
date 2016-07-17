@@ -29,7 +29,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'regedarek/ZoomWin'
+Plug 'troydm/zoomwintab.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
@@ -131,12 +131,19 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
-set ttymouse=xterm2
 set mouse=a
 
 set nostartofline
 set history=10000
 
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
+" neovim
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
 
 " }}}
 " ==============================================================================
@@ -258,9 +265,9 @@ nmap <Leader>d :Gdiff<CR>
 nnoremap <leader>n :NERDTreeToggle<cr>
 
 " ------------------------------------------------------------------------------
-" ZoomWin
+" ZoomWinTab
 " ------------------------------------------------------------------------------
-nnoremap <leader>z :ZoomWin<cr>
+nnoremap <leader>z :ZoomWinTabToggle<cr>
 
 " ------------------------------------------------------------------------------
 " EasyAlign
