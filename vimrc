@@ -22,16 +22,19 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " Naving
+Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'troydm/zoomwintab.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
+Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -388,4 +391,11 @@ nmap <Leader>ru :RuboCop<CR>
 let g:togglecursor_default = 'block'
 let g:togglecursor_insert = 'line'
 let g:togglecursor_replace = 'underline'
+" }}}
+
+" ----------------------------------------------------------------------------
+" vim-gitgutter
+" ----------------------------------------------------------------------------
+let g:gitgutter_enabled = 0
+nnoremap cog :GitGutterToggle<cr>
 " }}}
