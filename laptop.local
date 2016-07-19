@@ -38,6 +38,7 @@ brew bundle --file=- <<EOF
   cask 'skype'
   cask 'slack'
   cask 'vagrant'
+  cask 'virtualbox'
 
   mas 'The Unarchiver', id: 425424353
   mas 'Mactracker', id: 430255202
