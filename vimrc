@@ -19,6 +19,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -37,6 +38,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
 
 " Lang
 Plug 'chrisbra/csv.vim'
@@ -48,6 +50,7 @@ Plug 'othree/html5.vim'
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'scrooloose/syntastic'
+Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
@@ -398,4 +401,14 @@ let g:togglecursor_replace = 'underline'
 " ----------------------------------------------------------------------------
 let g:gitgutter_enabled = 0
 nnoremap cog :GitGutterToggle<cr>
+" }}}
+
+" ----------------------------------------------------------------------------
+" vim-rspec
+" ----------------------------------------------------------------------------
+let g:rspec_command = "Dispatch rspec {spec}"
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
 " }}}
