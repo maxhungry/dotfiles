@@ -39,3 +39,7 @@ Thumbs.db
 # ctags #
 #########
 tags
+
+# rbenv #
+#########
+.rbenv-vars
