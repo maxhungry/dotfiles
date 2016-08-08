@@ -126,8 +126,15 @@ set writebackup
 set nostartofline
 set history=10000
 
-" Hack for tmux-navigator
-nmap <BS> <C-W>h
+if !has('nvim')
+  set ttymouse=xterm2
+  set encoding=utf-8
+endif
+
+" neovim
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
 
 " }}}
 " ==============================================================================
