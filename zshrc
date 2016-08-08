@@ -9,6 +9,8 @@ plugins=(git bundler z tmux colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
+[ -r ~/.alias ] && source ~/.alias
+
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 setopt NO_BEEP
@@ -53,11 +55,6 @@ export CLICOLOR=1
 # Vim as visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL
-
-# Alias
-alias ls='ls -GFh'
-alias ember="./node_modules/.bin/ember"
-alias git=hub
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
