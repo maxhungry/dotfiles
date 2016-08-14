@@ -24,7 +24,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'majutsushi/tagbar'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -62,10 +61,10 @@ Plug 'vim-ruby/vim-ruby'
 
 " Color/Syntax/Others
 Plug 'altercation/vim-colors-solarized'
-Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'mattn/emmet-vim'
+Plug 'morhetz/gruvbox'
 Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/syntastic'
 
@@ -80,8 +79,9 @@ syntax enable
 
 let mapleader = ' '
 let maplocalleader = ' '
-let g:seoul256_background = 235
-colorscheme seoul256
+colorscheme gruvbox
+set background=dark
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set laststatus=2
 set relativenumber
@@ -326,8 +326,12 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 " Airline
 " ----------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
-" let g:airline#extensions#tabline#enabled = 1
+
+" ----------------------------------------------------------------------------
+" Tmuxline
+" ----------------------------------------------------------------------------
+let g:tmuxline_vim_statusline = 1
+let g:airline#extensions#tmuxline#enabled = 0 
 
 " ----------------------------------------------------------------------------
 " Vim-over
@@ -390,3 +394,4 @@ map <Leader>ra :call RunAllSpecs()<CR>
 let g:ruby_fold = 1
 
 " }}}
+" ==============================================================================

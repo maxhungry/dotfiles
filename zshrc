@@ -5,7 +5,7 @@ ZSH_THEME="agnoster_mod"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
-plugins=(git bundler z tmux colored-man-pages)
+plugins=(git bundler z tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -16,13 +16,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 setopt NO_BEEP
 
 export LANG=en_NZ.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -61,3 +54,6 @@ export EDITOR=$VISUAL
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 eval "$(rbenv init -)"
+
+# Manpages in nvim
+export MANPAGER="col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu nornu noma' -"
