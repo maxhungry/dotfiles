@@ -67,6 +67,7 @@ Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/syntastic'
+Plug 'beloglazov/vim-online-thesaurus'
 
 call plug#end()
 
