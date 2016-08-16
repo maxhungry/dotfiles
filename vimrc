@@ -26,7 +26,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'majutsushi/tagbar'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-projectionist'
@@ -34,12 +33,13 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/TailMinusF'
+Plug 'yggdroot/indentline'
 
 " Integration
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --omnisharp-completer' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
@@ -256,8 +256,8 @@ nnoremap <leader>z :ZoomWinTabToggle<cr>
 " ------------------------------------------------------------------------------
 " EasyAlign
 " ------------------------------------------------------------------------------
-vmap <Enter> <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " ------------------------------------------------------------------------------
 " CtrlP
@@ -393,6 +393,19 @@ map <Leader>ra :call RunAllSpecs()<CR>
 " vim-ruby
 " ----------------------------------------------------------------------------
 let g:ruby_fold = 1
+
+" ----------------------------------------------------------------------------
+" Ack & Ag
+" ----------------------------------------------------------------------------
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+nnoremap <Leader>a :Ack!<Space>
+
+" ----------------------------------------------------------------------------
+" indentline
+" ----------------------------------------------------------------------------
+let g:indentLine_color_gui = '#504945'
 
 " }}}
 " ==============================================================================
