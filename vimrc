@@ -6,8 +6,9 @@
 call plug#begin('~/.vim/plugged')
 
 " Edit
+Plug 'andrewradev/splitjoin.vim'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
@@ -19,6 +20,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -48,10 +50,11 @@ Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
+Plug 'junegunn/gv.vim'
 
 " Lang
 Plug 'chrisbra/csv.vim'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
@@ -61,13 +64,14 @@ Plug 'vim-ruby/vim-ruby'
 
 " Color/Syntax/Others
 Plug 'altercation/vim-colors-solarized'
+Plug 'beloglazov/vim-online-thesaurus'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/syntastic'
-Plug 'beloglazov/vim-online-thesaurus'
+" Plug 'rhysd/vim-grammarous'
 
 call plug#end()
 
@@ -110,6 +114,7 @@ set listchars+=trail:.
 set listchars+=extends:>
 set listchars+=precedes:<
 set foldlevelstart=99
+set foldmethod=indent
 set mouse=a
 
 " Searching
@@ -153,18 +158,6 @@ nnoremap <leader>q :quit<cr>
 
 " Go to last file
 nnoremap <leader><leader> <c-^>
-
-" ------------------------------------------------------------------------------
-" <tab> / <s-tab> | Circular windows navigation (ref: junegunn)
-" ------------------------------------------------------------------------------
-nnoremap <tab>   <c-w>w
-nnoremap <S-tab> <c-w>W
-
-" Toggle reativenumber in insert mode
-" :au FocusLost * :set norelativenumber
-" :au FocusGained * :set relativenumber
-" autocmd InsertEnter * :set norelativenumber
-" autocmd InsertLeave * :set relativenumber
 
 " Refresh
 noremap <leader>R :source $MYVIMRC<cr>
@@ -238,8 +231,14 @@ inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
 " ------------------------------------------------------------------------------
 " vim-fugitive
 " ------------------------------------------------------------------------------
-nmap <Leader>g :Gstatus<CR>gg<c-n>
-nmap <Leader>d :Gdiff<CR>
+nmap <Leader>gst :Gstatus<CR>gg<c-n>
+nmap <Leader>gd :Gdiff<CR>
+nmap <Leader>gb :Gblame<CR>
+
+" ------------------------------------------------------------------------------
+" GV.vim
+" ------------------------------------------------------------------------------
+nmap <Leader>gl :GV<CR>
 
 " ------------------------------------------------------------------------------
 " NERDtree
@@ -406,6 +405,14 @@ nnoremap <Leader>a :Ack!<Space>
 " indentline
 " ----------------------------------------------------------------------------
 let g:indentLine_color_gui = '#504945'
+nnoremap <Leader>il :IndentLinesToggle<CR>
+
+" ----------------------------------------------------------------------------
+" delimiteMate
+" ----------------------------------------------------------------------------
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
+let delimitMate_jump_expansion = 1
 
 " }}}
 " ==============================================================================
