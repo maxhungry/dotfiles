@@ -13,7 +13,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -21,6 +20,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'dkprice/vim-easygrep'
+Plug 'eugen0329/vim-esearch'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -30,6 +31,7 @@ Plug 'jszakmeister/vim-togglecursor'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist'
 Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
@@ -43,7 +45,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
-Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
@@ -51,6 +52,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'junegunn/gv.vim'
+Plug 'janko-m/vim-test'
 
 " Lang
 Plug 'chrisbra/csv.vim'
@@ -86,7 +88,7 @@ let mapleader = ' '
 let maplocalleader = ' '
 colorscheme gruvbox
 set background=dark
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 
 set laststatus=2
 set relativenumber
@@ -116,6 +118,8 @@ set listchars+=precedes:<
 set foldlevelstart=99
 set foldmethod=indent
 set mouse=a
+set winheight=40
+" set winminheight=5
 
 " Searching
 set incsearch  " search as char are entered
@@ -284,24 +288,6 @@ runtime! macros/matchit.vim
 set completefunc=emoji#complete
 
 " ----------------------------------------------------------------------------
-" Open files
-" ----------------------------------------------------------------------------
-nnoremap <silent> <Leader>o :FZF -m<CR>
-
-" ----------------------------------------------------------------------------
-" Choose color scheme
-" ----------------------------------------------------------------------------
-nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':     'colo',
-\   'options':  '+m',
-\   'left':     30,
-\   'launcher': 'iterm2-launcher 20 30 %s'
-\ })<CR>
-
-" ----------------------------------------------------------------------------
 " Select buffer
 " ----------------------------------------------------------------------------
 function! s:buflist()
@@ -314,13 +300,6 @@ endfunction
 function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
-
-nnoremap <silent> <Leader><Enter> :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
 
 " ----------------------------------------------------------------------------
 " Airline
@@ -380,18 +359,19 @@ let g:gitgutter_enabled = 0
 nnoremap cog :GitGutterToggle<cr>
 
 " ----------------------------------------------------------------------------
-" vim-rspec
+" vim-test
 " ----------------------------------------------------------------------------
-let g:rspec_command = "Dispatch rspec {spec}"
-map <Leader>rt :call RunCurrentSpecFile()<CR>
-map <Leader>rs :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
-map <Leader>ra :call RunAllSpecs()<CR>
-
+let test#strategy = 'dispatch'
+nmap <silent> <leader>rs :TestNearest<CR>
+nmap <silent> <leader>rt :TestFile<CR>
+nmap <silent> <leader>ra :TestSuite<CR>
+nmap <silent> <leader>rl :TestLast<CR>
+nmap <silent> <leader>rg :TestVisit<CR>
+let test#ruby#rspec#options = '--format documentation --profile --'
 " ----------------------------------------------------------------------------
 " vim-ruby
 " ----------------------------------------------------------------------------
-let g:ruby_fold = 1
+" let g:ruby_fold = 1
 
 " ----------------------------------------------------------------------------
 " Ack & Ag
@@ -399,7 +379,7 @@ let g:ruby_fold = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-nnoremap <Leader>a :Ack!<Space>
+" nnoremap <Leader>a :Ack!<Space>
 
 " ----------------------------------------------------------------------------
 " indentline
@@ -413,6 +393,44 @@ nnoremap <Leader>il :IndentLinesToggle<CR>
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 let delimitMate_jump_expansion = 1
+
+" ----------------------------------------------------------------------------
+" FZF
+" ----------------------------------------------------------------------------
+" Gloable fzf maps
+let g:fzf_action = {
+\  'ctrl-t': 'tab split',
+\  'ctrl-s': 'split',
+\  'ctrl-v': 'vsplit'
+\ }
+
+" Key mappings
+nnoremap <silent> <Leader>o :Files<CR>
+nnoremap <silent> <Leader>a :Ag<CR>
+
+" Choose color scheme
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':     'colo',
+\   'options':  '+m',
+\   'left':     30,
+\   'launcher': 'iterm2-launcher 20 30 %s'
+\ })<CR>
+
+
+" nnoremap <silent> <Leader><Enter> :call fzf#run({
+" \   'source':  reverse(<sid>buflist()),
+" \   'sink':    function('<sid>bufopen'),
+" \   'options': '+m',
+" \   'down':    len(<sid>buflist()) + 2
+" \ })<CR>
+
+" ----------------------------------------------------------------------------
+" vim-easygrep
+" ----------------------------------------------------------------------------
+let g:EasyGrepCommand="ag"
 
 " }}}
 " ==============================================================================

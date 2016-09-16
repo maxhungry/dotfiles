@@ -7,6 +7,7 @@ brew bundle --file=- <<EOF
   brew 'nvm'
   brew 'rbenv-ctags'
   brew 'rbenv-vars'
+  brew 'terminal-notifier'
   brew 'tree'
   brew 'watchman'
   brew 'wget'
