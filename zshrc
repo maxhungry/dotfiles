@@ -52,6 +52,7 @@ export EDITOR=$VISUAL
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 eval "$(rbenv init -)"
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Manpages in nvim
-export MANPAGER="col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu nornu noma' -"
+export MANPAGER="nvim -c 'set ft=man' -"

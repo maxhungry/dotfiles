@@ -11,6 +11,7 @@ brew bundle --file=- <<EOF
   brew 'tree'
   brew 'watchman'
   brew 'wget'
+  brew 'zsh-syntax-highlighting'
 
   # gui apps
   brew 'mas'

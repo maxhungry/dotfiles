@@ -1,0 +1,13 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+
+Metrics/LineLength:
+  Enabled: false
+
+Rails:
+  Enabled: true

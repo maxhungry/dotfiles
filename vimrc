@@ -6,10 +6,13 @@
 call plug#begin('~/.vim/plugged')
 
 " Edit
+Plug 'Raimondi/delimitMate'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'Raimondi/delimitMate'
+Plug 'eugen0329/vim-esearch'
 Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
 Plug 'tpope/vim-commentary'
@@ -20,8 +23,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'dkprice/vim-easygrep'
-Plug 'eugen0329/vim-esearch'
+Plug 'ecomba/vim-ruby-refactoring'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -53,6 +55,10 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'junegunn/gv.vim'
 Plug 'janko-m/vim-test'
+Plug 'neomake/neomake'
+Plug 'jgdavey/tslime.vim'
+" Plug 'junkblocker/patchreview-vim'
+" Plug 'codegram/vim-codereview'
 
 " Lang
 Plug 'chrisbra/csv.vim'
@@ -60,9 +66,12 @@ Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'kchmck/vim-coffee-script'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'posva/vim-vue'
+" yajs is pretty but slow...
+" Plug 'othree/yajs.vim'
 
 " Color/Syntax/Others
 Plug 'altercation/vim-colors-solarized'
@@ -72,7 +81,9 @@ Plug 'junegunn/vim-emoji'
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ngmy/vim-rubocop'
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-markdown'
+Plug 'vim-scripts/SyntaxRange'
+Plug 'vim-scripts/ingo-library'
 " Plug 'rhysd/vim-grammarous'
 
 call plug#end()
@@ -171,6 +182,12 @@ nnoremap <CR> o<Esc>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
+
+" ------------------------------------------------------------------------------
+" Convert hash rockets
+" ------------------------------------------------------------------------------
+nnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
+xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 
 " from junegunn - github.com/junegunn/dotfiles
 " ------------------------------------------------------------------------------
@@ -327,18 +344,9 @@ function! VisualFindAndReplaceWithSelection() range
 endfunction
 
 " ----------------------------------------------------------------------------
-" Vim-over
+" neomake
 " ----------------------------------------------------------------------------
-let g:ycm_register_as_syntastic_checker = 0
-
-" ----------------------------------------------------------------------------
-" Syntastic
-" ----------------------------------------------------------------------------
-" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+autocmd! BufWritePost,BufEnter * Neomake
 
 " ----------------------------------------------------------------------------
 " RuboCop
@@ -385,6 +393,7 @@ endif
 " indentline
 " ----------------------------------------------------------------------------
 let g:indentLine_color_gui = '#504945'
+let g:indentLine_enabled = 0
 nnoremap <Leader>il :IndentLinesToggle<CR>
 
 " ----------------------------------------------------------------------------
@@ -403,10 +412,13 @@ let g:fzf_action = {
 \  'ctrl-s': 'split',
 \  'ctrl-v': 'vsplit'
 \ }
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_history_dir = '~/.fzf-history'
 
 " Key mappings
 nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>a :Ag<CR>
+nnoremap <silent> <Leader><Enter> :Buffers<CR>
 
 " Choose color scheme
 nnoremap <silent> <Leader>C :call fzf#run({
@@ -427,10 +439,4 @@ nnoremap <silent> <Leader>C :call fzf#run({
 " \   'down':    len(<sid>buflist()) + 2
 " \ })<CR>
 
-" ----------------------------------------------------------------------------
-" vim-easygrep
-" ----------------------------------------------------------------------------
-let g:EasyGrepCommand="ag"
-
-" }}}
 " ==============================================================================
