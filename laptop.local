@@ -38,7 +38,6 @@ brew bundle --file=- <<EOF
   cask 'sketch'
   cask 'spotify'
   cask 'skype'
-  cask 'slack'
   cask 'vagrant'
   cask 'virtualbox'
 
@@ -51,4 +50,5 @@ brew bundle --file=- <<EOF
   mas 'OmniFocus', id: 867299399
   mas 'Pixelmator', id: 407963104
   mas 'DaisyDisk', id: 411643860
+  mas 'Slack', id: 803453959
 EOF
