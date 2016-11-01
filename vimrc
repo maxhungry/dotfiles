@@ -347,6 +347,13 @@ endfunction
 " neomake
 " ----------------------------------------------------------------------------
 autocmd! BufWritePost,BufEnter * Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = './eslintrc.js'
+let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
+let g:neomake_vue_eslint_maker = {
+    \ 'args': ['--no-color', '--format', 'compact', '--config', './.eslintrc.js'],
+    \ 'errorformat': '%f: line %l\, col %c\, %m'
+    \ }
 
 " ----------------------------------------------------------------------------
 " RuboCop
