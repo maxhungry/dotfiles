@@ -22,3 +22,10 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[merge]
+	tool = vimdiff
+[mergetool]
+  prompt = true
+	keepBackup = false
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED
