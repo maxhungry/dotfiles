@@ -44,7 +44,7 @@ colors
 export CLICOLOR=1
 
 # Vim as visual editor
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
