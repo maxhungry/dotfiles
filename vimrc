@@ -415,6 +415,7 @@ let delimitMate_jump_expansion = 1
 " FZF
 " ----------------------------------------------------------------------------
 " Gloable fzf maps
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_action = {
 \  'ctrl-t': 'tab split',
 \  'ctrl-s': 'split',
@@ -439,6 +440,19 @@ nnoremap <silent> <Leader>C :call fzf#run({
 \   'launcher': 'iterm2-launcher 20 30 %s'
 \ })<CR>
 
+let g:fzf_colors =
+\ { 'fg':      ['GruvboxFg0', 'Normal'],
+  \ 'bg':      ['GruvboxBg0', 'Normal'],
+  \ 'hl':      ['hl', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " nnoremap <silent> <Leader><Enter> :call fzf#run({
 " \   'source':  reverse(<sid>buflist()),
