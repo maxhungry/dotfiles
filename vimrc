@@ -25,6 +25,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'mattn/emmet-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -183,28 +186,6 @@ vnoremap <leader>p "_dP
 " ------------------------------------------------------------------------------
 nnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
-
-" from junegunn - github.com/junegunn/dotfiles
-" ------------------------------------------------------------------------------
-" <F8> | Color scheme selector
-" ------------------------------------------------------------------------------
-function! s:rotate_colors()
-  if !exists('s:colors_list')
-    let s:colors_list =
-    \ sort(map(
-    \   filter(split(globpath(&rtp, "colors/*.vim"), "\n"), 'v:val !~ "^/usr/"'),
-    \   "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"))
-  endif
-  if !exists('s:colors_index')
-    let s:colors_index = index(s:colors_list, g:colors_name)
-  endif
-  let s:colors_index = (s:colors_index + 1) % len(s:colors_list)
-  let name = s:colors_list[s:colors_index]
-  execute 'colorscheme' name
-  redraw
-  echo name
-endfunction
-nnoremap <F8> :call <SID>rotate_colors()<cr>
 
 " ------------------------------------------------------------------------------
 " <tab> / <s-tab> / <c-v><tab> | super-duper-tab
@@ -448,4 +429,8 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" ==============================================================================
+" ----------------------------------------------------------------------------
+" YCM YouCompleteMe
+" ----------------------------------------------------------------------------
+let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
