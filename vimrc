@@ -24,6 +24,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ecomba/vim-ruby-refactoring'
+Plug 'mattn/emmet-vim'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -60,29 +61,23 @@ Plug 'jgdavey/tslime.vim'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'codegram/vim-codereview'
 
-" Lang
+" Lang/Syntax/Lint
 Plug 'chrisbra/csv.vim'
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'kchmck/vim-coffee-script'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'othree/html5.vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'c-brenn/phoenix.vim'
+Plug 'slashmili/alchemist.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'posva/vim-vue'
-" yajs is pretty but slow...
-" Plug 'othree/yajs.vim'
-
-" Color/Syntax/Others
-Plug 'altercation/vim-colors-solarized'
-Plug 'beloglazov/vim-online-thesaurus'
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-emoji'
-Plug 'mattn/emmet-vim'
-Plug 'morhetz/gruvbox'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
+Plug 'junegunn/vim-emoji'
+
+" Colors/Others
+Plug 'altercation/vim-colors-solarized'
+Plug 'beloglazov/vim-online-thesaurus'
+Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/ingo-library'
 " Plug 'rhysd/vim-grammarous'
 
@@ -452,12 +447,5 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-
-" nnoremap <silent> <Leader><Enter> :call fzf#run({
-" \   'source':  reverse(<sid>buflist()),
-" \   'sink':    function('<sid>bufopen'),
-" \   'options': '+m',
-" \   'down':    len(<sid>buflist()) + 2
-" \ })<CR>
 
 " ==============================================================================
