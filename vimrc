@@ -226,14 +226,17 @@ inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
 " ------------------------------------------------------------------------------
 " vim-fugitive
 " ------------------------------------------------------------------------------
-nmap <Leader>gst :Gstatus<CR>gg<c-n>
-nmap <Leader>gd :Gdiff<CR>
-nmap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gst :Gstatus<CR>gg<c-n>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>ge :Gedit<CR>
+nnoremap <Leader>gc :Gcommit -v<CR>
+nnoremap <Leader>gps :Dispatch! :Gpush<CR>
 
 " ------------------------------------------------------------------------------
 " GV.vim
 " ------------------------------------------------------------------------------
-nmap <Leader>gl :GV<CR>
+nmap <Leader>gv :GV<CR>
 
 " ------------------------------------------------------------------------------
 " NERDtree
