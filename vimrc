@@ -38,6 +38,7 @@ Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-projectionist'
 Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
@@ -352,8 +353,19 @@ nmap <silent> <leader>rs :TestNearest<CR>
 nmap <silent> <leader>rt :TestFile<CR>
 nmap <silent> <leader>ra :TestSuite<CR>
 nmap <silent> <leader>rl :TestLast<CR>
-nmap <silent> <leader>rg :TestVisit<CR>
-let test#ruby#rspec#options = '--format documentation --profile --'
+nmap <silent> <leader>rv :TestVisit<CR>
+nmap <silent> <leader>rg :call VimTestStrategyToggle()<CR>
+let test#ruby#rspecvoptions = '--format documentation --profile --'
+
+function! VimTestStrategyToggle()
+  if g:test#strategy == 'dispatch'
+    let g:test#strategy = 'tslime'
+    echo 'Switch test strategy to tslime'
+  else
+    let g:test#strategy = 'dispatch'
+    echo 'Switch test strategy to dispatch'
+  endif
+endfunction
 
 " ----------------------------------------------------------------------------
 " Ack & Ag
