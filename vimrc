@@ -145,9 +145,6 @@ set writebackup
 set nostartofline
 set history=10000
 
-" Hack for tmux-navigator
-nmap <BS> <C-W>h
-
 " }}}
 " ==============================================================================
 " MAPPINGS {{{
@@ -240,8 +237,6 @@ nmap <Leader>gl :GV<CR>
 " ------------------------------------------------------------------------------
 " NERDtree
 " ------------------------------------------------------------------------------
-" set autochdir
-" let NERDTreeChDirMode=2
 nnoremap <leader>n :NERDTreeToggle<cr>
 
 " ------------------------------------------------------------------------------
@@ -359,10 +354,6 @@ nmap <silent> <leader>ra :TestSuite<CR>
 nmap <silent> <leader>rl :TestLast<CR>
 nmap <silent> <leader>rg :TestVisit<CR>
 let test#ruby#rspec#options = '--format documentation --profile --'
-" ----------------------------------------------------------------------------
-" vim-ruby
-" ----------------------------------------------------------------------------
-" let g:ruby_fold = 1
 
 " ----------------------------------------------------------------------------
 " Ack & Ag
@@ -370,7 +361,6 @@ let test#ruby#rspec#options = '--format documentation --profile --'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-" nnoremap <Leader>a :Ack!<Space>
 
 " ----------------------------------------------------------------------------
 " indentline
@@ -403,17 +393,6 @@ let g:fzf_history_dir = '~/.fzf-history'
 nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>a :Ag<CR>
 nnoremap <silent> <Leader><Enter> :Buffers<CR>
-
-" Choose color scheme
-nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':     'colo',
-\   'options':  '+m',
-\   'left':     30,
-\   'launcher': 'iterm2-launcher 20 30 %s'
-\ })<CR>
 
 let g:fzf_colors =
 \ { 'fg':      ['GruvboxFg0', 'Normal'],
