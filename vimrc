@@ -26,8 +26,9 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -47,9 +48,7 @@ Plug 'vim-scripts/TailMinusF'
 Plug 'yggdroot/indentline'
 
 " Integration
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --omnisharp-completer' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-bundler'
@@ -146,6 +145,8 @@ set writebackup
 set nostartofline
 set history=10000
 
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python4_host_prog = '/usr/local/bin/python3'
 " }}}
 " ==============================================================================
 " MAPPINGS {{{
@@ -185,39 +186,6 @@ vnoremap <leader>p "_dP
 nnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 
-" ------------------------------------------------------------------------------
-" <tab> / <s-tab> / <c-v><tab> | super-duper-tab
-" ------------------------------------------------------------------------------
-function! s:can_complete(func, prefix)
-if empty(a:func) || call(a:func, [1, '']) < 0
-return 0
-endif
-let result = call(a:func, [0, matchstr(a:prefix, '\k\+$')])
-return !empty(type(result) == type([]) ? result : result.words)
-endfunction
-function! s:super_duper_tab(k, o)
-if pumvisible()
-return a:k
-endif
-let line = getline('.')
-let col = col('.') - 2
-if empty(line) || line[col] !~ '\k\|[/~.]' || line[col + 1] =~ '\k'
-return a:o
-endif
-let prefix = expand(matchstr(line[0:col], '\S*$'))
-if prefix =~ '^[~/.]'
-return "\<c-x>\<c-f>"
-endif
-if s:can_complete(&omnifunc, prefix)
-return "\<c-x>\<c-o>"
-endif
-if s:can_complete(&completefunc, prefix)
-return "\<c-x>\<c-u>"
-endif
-return a:k
-endfunction
-inoremap <expr> <tab>   <SID>super_duper_tab("\<c-n>", "\<tab>")
-inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
 " }}}
 " ==============================================================================
 " PLUGINS {{{
@@ -424,7 +392,10 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " ----------------------------------------------------------------------------
-" YCM YouCompleteMe
+" deoplete
 " ----------------------------------------------------------------------------
-let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
+inoremap <silent><expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
+call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
