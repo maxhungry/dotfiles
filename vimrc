@@ -41,7 +41,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-projectionist'
-Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/TailMinusF'
@@ -174,12 +173,20 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
 
-" ------------------------------------------------------------------------------
 " Convert hash rockets
-" ------------------------------------------------------------------------------
 nnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 
+" Zoom (junegunn)
+function! s:zoom()
+  if winnr('$') > 1
+    tab split
+  elseif len(filter(map(range(tabpagenr('$')), 'tabpagebuflist(v:val + 1)'),
+                  \ 'index(v:val, '.bufnr('').') >= 0')) > 1
+    tabclose
+  endif
+endfunction
+nnoremap <silent> <leader>z :call <sid>zoom()<cr>
 " }}}
 " ==============================================================================
 " PLUGINS {{{
