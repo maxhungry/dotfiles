@@ -10,12 +10,12 @@ Plug 'Raimondi/delimitMate'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'eugen0329/vim-esearch'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary', { 'on': '<Plug>Commentary' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -52,7 +52,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegu
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
@@ -153,29 +153,23 @@ let g:python4_host_prog = '/usr/local/bin/python3'
 " ==============================================================================
 " Movement
 nnoremap j gj
-nnoremap gV `[v`]
 nnoremap k gk
-
-" Make Y behave like other capitals (ref: junegunn)
+nnoremap gV `[v`]
 nnoremap Y y$
 
 " qq to record, Q to replay (ref: junegunn)
 nnoremap Q @q
 
-" Save
+" Shortcuts
 nnoremap <leader>s :update<cr>
-
-" Quit
 nnoremap <leader>q :quit<cr>
+noremap  <leader>R :source $MYVIMRC<cr>
+nnoremap <CR> o<Esc>
 
 " Go to last file
 nnoremap <leader><leader> <c-^>
 
-" Refresh
-noremap <leader>R :source $MYVIMRC<cr>
-
-nnoremap <CR> o<Esc>
-
+" Deletes
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
@@ -195,10 +189,10 @@ xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 " vim-fugitive
 " ------------------------------------------------------------------------------
 nnoremap <Leader>gst :Gstatus<CR>gg<c-n>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gc :Gcommit -v<CR>
+nnoremap <Leader>gd  :Gdiff<CR>
+nnoremap <Leader>gb  :Gblame<CR>
+nnoremap <Leader>ge  :Gedit<CR>
+nnoremap <Leader>gc  :Gcommit   -v<CR>
 nnoremap <Leader>gps :Dispatch! :Gpush<CR>
 
 " ------------------------------------------------------------------------------
@@ -219,13 +213,9 @@ nnoremap <leader>z :ZoomWinTabToggle<cr>
 " ------------------------------------------------------------------------------
 " EasyAlign
 " ------------------------------------------------------------------------------
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" ------------------------------------------------------------------------------
-" CtrlP
-" ------------------------------------------------------------------------------
-let g:ctrlp_show_hidden = 1
+xmap ga  <Plug>(EasyAlign)
+nmap ga  <Plug>(EasyAlign)
+nmap gaa ga_
 
 " ------------------------------------------------------------------------------
 " handlebars
@@ -243,23 +233,9 @@ nnoremap <F5> :GundoToggle<CR>
 runtime! macros/matchit.vim
 
 " ------------------------------------------------------------------------------
-" matchit.vim
+" vim-emoji
 " ------------------------------------------------------------------------------
 set completefunc=emoji#complete
-
-" ----------------------------------------------------------------------------
-" Select buffer
-" ----------------------------------------------------------------------------
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
 
 " ----------------------------------------------------------------------------
 " Airline
@@ -298,11 +274,6 @@ let g:neomake_vue_eslint_maker = {
     \ 'errorformat': '%f: line %l\, col %c\, %m',
     \ 'exe': './node_modules/.bin/eslint'
     \ }
-
-" ----------------------------------------------------------------------------
-" RuboCop
-" ----------------------------------------------------------------------------
-nmap <Leader>ru :RuboCop<CR>
 
 " ----------------------------------------------------------------------------
 " vim-togglecursor
@@ -399,3 +370,11 @@ let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
 inoremap <silent><expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
 call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+
+" ----------------------------------------------------------------------------
+" vim-commentary
+" ----------------------------------------------------------------------------
+map  gc  <Plug>Commentary
+nmap gcc <Plug>CommentaryLine
+
+" }}}
