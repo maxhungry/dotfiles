@@ -50,7 +50,7 @@ export EDITOR=$VISUAL
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+. "/usr/local/opt/nvm/nvm.sh"
 eval "$(rbenv init -)"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
