@@ -165,7 +165,8 @@ nnoremap Q @q
 
 " Shortcuts
 nnoremap <leader>s :update<cr>
-nnoremap <leader>q :quit<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :qa!<cr>
 noremap  <leader>R :source $MYVIMRC<cr>
 nnoremap <CR> o<Esc>
 
@@ -215,11 +216,6 @@ nmap <Leader>gv :GV<CR>
 " NERDtree
 " ------------------------------------------------------------------------------
 nnoremap <leader>n :NERDTreeToggle<cr>
-
-" ------------------------------------------------------------------------------
-" ZoomWinTab
-" ------------------------------------------------------------------------------
-nnoremap <leader>z :ZoomWinTabToggle<cr>
 
 " ------------------------------------------------------------------------------
 " EasyAlign
@@ -387,5 +383,10 @@ call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 " ----------------------------------------------------------------------------
 map  gc  <Plug>Commentary
 nmap gcc <Plug>CommentaryLine
+
+" ----------------------------------------------------------------------------
+" vim-table-mode
+" ----------------------------------------------------------------------------
+let g:table_mode_corner_corner = '+'
 
 " }}}
