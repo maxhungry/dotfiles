@@ -81,7 +81,7 @@ Plug 'beloglazov/vim-online-thesaurus'
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/ingo-library'
-" Plug 'rhysd/vim-grammarous'
+Plug 'rhysd/vim-grammarous'
 
 call plug#end()
 
@@ -94,6 +94,7 @@ syntax enable
 
 let mapleader = ' '
 let maplocalleader = ' '
+
 colorscheme gruvbox
 set background=dark
 set termguicolors
@@ -146,6 +147,9 @@ set history=10000
 
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python4_host_prog = '/usr/local/bin/python3'
+
+" Spell check
+set spell spelllang=en_nz
 " }}}
 " ==============================================================================
 " MAPPINGS {{{
