@@ -8,6 +8,7 @@ plugins=(git bundler z tmux)
 source $ZSH/oh-my-zsh.sh
 
 [ -r ~/.alias ] && source ~/.alias
+[ -r ~/.tiny-care-terminal ] && source ~/.tiny-care-terminal
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
