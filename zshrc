@@ -57,3 +57,6 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Manpages in nvim
 export MANPAGER="nvim -c 'set ft=man' -"
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
