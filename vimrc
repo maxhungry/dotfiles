@@ -15,7 +15,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
-Plug 'tpope/vim-commentary', { 'on': '<Plug>Commentary' }
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
@@ -65,9 +65,10 @@ Plug 'jgdavey/tslime.vim'
 
 " Lang/Syntax/Lint
 Plug 'chrisbra/csv.vim'
-Plug 'c-brenn/phoenix.vim'
+" Plug 'c-brenn/phoenix.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'elixir-lang/vim-elixir'
 Plug 'posva/vim-vue'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ngmy/vim-rubocop'
@@ -101,6 +102,7 @@ set termguicolors
 
 set laststatus=2
 set relativenumber
+set number
 set showcmd
 set cursorline
 set wildmenu
@@ -181,6 +183,8 @@ vnoremap <leader>p "_dP
 " Convert hash rockets
 nnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
+
+nnoremap <Leader>T :tabedit %<CR>
 
 " Zoom (junegunn)
 function! s:zoom()
@@ -276,11 +280,11 @@ autocmd! BufWritePost,BufEnter * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
 let g:neomake_vue_enabled_makers = ['eslint']
-let g:neomake_vue_eslint_maker = {
-    \ 'args': ['--no-color', '--format', 'compact', '--config', './.eslintrc.js'],
-    \ 'errorformat': '%f: line %l\, col %c\, %m',
-    \ 'exe': './node_modules/.bin/eslint'
-    \ }
+" let g:neomake_vue_eslint_maker = {
+"     \ 'args': ['--no-color', '--format', 'compact', '--config', './frontend/.eslintrc.js'],
+"     \ 'errorformat': '%f: line %l\, col %c\, %m',
+"     \ 'exe': './node_modules/.bin/eslint'
+"     \ }
 
 " ----------------------------------------------------------------------------
 " vim-togglecursor
@@ -370,12 +374,18 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " ----------------------------------------------------------------------------
+" SuperTab
+" ----------------------------------------------------------------------------
+let g:SuperTabDefaultCompletionType = "<c-n>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" ----------------------------------------------------------------------------
 " deoplete
 " ----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
-inoremap <silent><expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
-inoremap <silent><expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
+" inoremap <silent><expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
+" inoremap <silent><expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
 call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 " ----------------------------------------------------------------------------
