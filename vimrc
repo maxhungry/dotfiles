@@ -58,7 +58,7 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'junegunn/gv.vim'
 Plug 'janko-m/vim-test'
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'jgdavey/tslime.vim'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'codegram/vim-codereview'
@@ -69,7 +69,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-markdown'
@@ -274,19 +274,6 @@ function! VisualFindAndReplaceWithSelection() range
 endfunction
 
 " ----------------------------------------------------------------------------
-" neomake
-" ----------------------------------------------------------------------------
-autocmd! BufWritePost,BufEnter * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = './node_modules/.bin/eslint'
-let g:neomake_vue_enabled_makers = ['eslint']
-" let g:neomake_vue_eslint_maker = {
-"     \ 'args': ['--no-color', '--format', 'compact', '--config', './frontend/.eslintrc.js'],
-"     \ 'errorformat': '%f: line %l\, col %c\, %m',
-"     \ 'exe': './node_modules/.bin/eslint'
-"     \ }
-
-" ----------------------------------------------------------------------------
 " vim-togglecursor
 " ----------------------------------------------------------------------------
 let g:togglecursor_default = 'block'
@@ -400,3 +387,5 @@ nmap gcc <Plug>CommentaryLine
 let g:table_mode_corner_corner = '+'
 
 " }}}
+
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.javascript.css
