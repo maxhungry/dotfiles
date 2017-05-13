@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 setopt NO_BEEP
 
-export LANG=en_NZ.UTF-8
+# export LANG=en_NZ.UTF-8
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -33,7 +33,7 @@ bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
 
-zle-line-init
+# zle-line-init
 # zle-keymap-select
 
 # Allow '[' and ']' for rake tasks
@@ -60,3 +60,11 @@ export MANPAGER="nvim -c 'set ft=man' -"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+if [ -n "$INSIDE_EMACS" ]; then
+    export TERM=eterm-color
+    export PAGER=cat
+else
+    export TERM=xterm-256color
+fi
+stty -ixon -ixoff
