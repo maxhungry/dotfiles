@@ -69,7 +69,6 @@ Plug 'chrisbra/csv.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
-" Plug 'posva/vim-vue'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-markdown'
@@ -386,6 +385,10 @@ nmap gcc <Plug>CommentaryLine
 " ----------------------------------------------------------------------------
 let g:table_mode_corner_corner = '+'
 
+" ----------------------------------------------------------------------------
+" ale
+" ----------------------------------------------------------------------------
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " }}}
 
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.javascript.css
+autocmd BufEnter *.vue syntax sync fromstart
