@@ -165,7 +165,7 @@ nnoremap Y y$
 nnoremap Q @q
 
 " Shortcuts
-nnoremap <leader>s :update<cr>
+nnoremap <leader>fs :update<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qa!<cr>
 noremap  <leader>R :source $MYVIMRC<cr>
@@ -218,7 +218,8 @@ nmap <Leader>gv :GV<CR>
 " ------------------------------------------------------------------------------
 " NERDtree
 " ------------------------------------------------------------------------------
-nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>pt :NERDTreeToggle<cr>
+nnoremap <leader>ft :NERDTreeToggle<cr>
 
 " ------------------------------------------------------------------------------
 " EasyAlign
@@ -341,9 +342,11 @@ let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_history_dir = '~/.fzf-history'
 
 " Key mappings
-nnoremap <silent> <Leader>o :Files<CR>
-nnoremap <silent> <Leader>a :Ag<CR>
-nnoremap <silent> <Leader><Enter> :Buffers<CR>
+nnoremap <silent> <Leader>pf :Files<CR>
+nnoremap <silent> <Leader>ff :Files<CR>
+nnoremap <silent> <Leader>sp :Ag<CR>
+nnoremap <silent> <Leader>/ :Ag<CR>
+nnoremap <silent> <Leader>bb :Buffers<CR>
 
 let g:fzf_colors =
 \ { 'fg':      ['GruvboxFg0', 'Normal'],
