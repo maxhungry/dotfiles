@@ -7,20 +7,12 @@ plugins=(git bundler z tmux)
 
 source $ZSH/oh-my-zsh.sh
 
-[ -r ~/.alias ] && source ~/.alias
-[ -r ~/.tiny-care-terminal ] && source ~/.tiny-care-terminal
+[ -r ~/.secrets ] && source ~/.secrets
+[ -r ~/.aliases ] && source ~/.aliases
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 setopt NO_BEEP
-
-# export LANG=en_NZ.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Vim integration
 bindkey -v
@@ -55,16 +47,15 @@ export NVM_DIR=~/.nvm
 eval "$(rbenv init -)"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Manpages in nvim
-export MANPAGER="nvim -c 'set ft=man' -"
-
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# Emacs specifics
 if [ -n "$INSIDE_EMACS" ]; then
     export TERM=eterm-color
-    export PAGER=cat
+    export PAGER="cat"
 else
     export TERM=xterm-256color
+    # Manpages in nvim
+    export MANPAGER="nvim -c 'set ft=man' -"
 fi
-stty -ixon -ixoff
