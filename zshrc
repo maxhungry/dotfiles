@@ -7,46 +7,32 @@ plugins=(git bundler z tmux)
 
 source $ZSH/oh-my-zsh.sh
 
-[ -r ~/.secrets ] && source ~/.secrets
-[ -r ~/.aliases ] && source ~/.aliases
-
-# User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
-setopt NO_BEEP
-
-# Vim integration
-bindkey -v
 export KEYTIMEOUT=1
+export CLICOLOR=1
+export VISUAL=nvim
+export EDITOR=$VISUAL
 
-#keybindings
+unsetopt nomatch # Allow '[' and ']' for rake tasks
+setopt NO_BEEP
+bindkey -v
+autoload -U colors # Enable color output
+colors
+
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
 
-# zle-line-init
-# zle-keymap-select
-
-# Allow '[' and ']' for rake tasks
-unsetopt nomatch
-
-# Enable color output
-autoload -U colors
-colors
-export CLICOLOR=1
-
-# Vim as visual editor
-export VISUAL=nvim
-export EDITOR=$VISUAL
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+# nvm
 export NVM_DIR=~/.nvm
 . "/usr/local/opt/nvm/nvm.sh"
-eval "$(rbenv init -)"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# rbenv
+eval "$(rbenv init -)"
+
+# asdf
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
@@ -59,3 +45,9 @@ else
     # Manpages in nvim
     export MANPAGER="nvim -c 'set ft=man' -"
 fi
+
+[ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
+[ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
