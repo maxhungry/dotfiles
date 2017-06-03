@@ -68,6 +68,7 @@ values."
      finance
      restclient
      vimscript
+     ranger
      ;; dash
      ;; systemd
      ;; slack
