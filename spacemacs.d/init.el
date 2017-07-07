@@ -31,10 +31,14 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     elixir
+     react
      sql
      yaml
      helm
-     gtags
+     csv
+     emoji
+     ;; gtags
      (auto-completion :variables
                       auto-completion-return-key-behavior 'nil
                       auto-completion-tab-key-behavior 'complete)
@@ -47,7 +51,7 @@ values."
           org-enable-reveal-js-support t)
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-position 'right)
      shell-scripts
      spell-checking
      (syntax-checking :variables
@@ -69,6 +73,7 @@ values."
      restclient
      vimscript
      ranger
+     fasd
      ;; dash
      ;; systemd
      ;; slack
@@ -344,6 +349,12 @@ you should place your code here."
   (setq-default js-indent-level 2)
   (setq css-indent-offset 2)
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-show-hidden-files nil)
+
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  (global-set-key (kbd "s-w") nil)
 
   (prodigy-define-service
     :name "Goodnest Server"
@@ -431,7 +442,25 @@ you should place your code here."
 
   (setq
    powerline-default-separator 'utf-8
-   require-final-newline t))
+   require-final-newline t)
+
+  (defun my-sql-login-hook ()
+    "Custom SQL log-in behaviours. See `sql-login-hook'."
+    ;; n.b. If you are looking for a response and need to parse the
+    ;; response, use `sql-redirect-value' instead of `comint-send-string'.
+    (when (eq sql-product 'postgres)
+      (let ((proc (get-buffer-process (current-buffer))))
+        ;; Output each query before executing it. (n.b. this also avoids
+        ;; the psql prompt breaking the alignment of query results.)
+        (comint-send-string proc "\\set ECHO queries\n"))))
+  (add-hook 'sql-login-hook 'my-sql-login-hook)
+
+  (add-hook 'sql-interactive-mode-hook
+            (lambda ()
+              (setq sql-prompt-regexp "^[_[:alpha:]]*[=][#>] ")
+              (setq sql-prompt-cont-regexp "^[_[:alpha:]]*[-][#>] ")))
+
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -440,10 +469,13 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#282828" "#cc241d" "#98971a" "#d79921" "#458588" "#b16286" "#689d6a" "#bdae93"])
  '(package-selected-packages
    (quote
-    (emoji-cheat-sheet-plus company-emoji ranger vimrc-mode dactyl-mode insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ smartparens evil helm helm-core dash sql-indent helm-gtags ggtags ox-reveal restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well engine-mode ledger-mode flycheck-ledger rainbow-mode rainbow-identifiers color-identifiers-mode prodigy helm-dash dash-at-point systemd slack emojify circe oauth2 websocket ht yaml-mode web-mode web-beautify tagedit slim-mode scss-mode sass-mode reveal-in-osx-finder pug-mode pbcopy osx-trash osx-dictionary livid-mode skewer-mode simple-httpd less-css-mode launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern dash-functional tern coffee-mode unfill smeargle rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv projectile-rails rake inflections orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mwim mmm-mode minitest markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck feature-mode evil-magit magit magit-popup git-commit with-editor enh-ruby-mode diff-hl company-statistics company chruby bundler inf-ruby auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(paradox-github-token t))
+    (undo-tree highlight avy birds-of-paradis-plus-theme csv-mode ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode async fasd emoji-cheat-sheet-plus company-emoji ranger vimrc-mode dactyl-mode insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ smartparens evil helm helm-core dash sql-indent helm-gtags ggtags ox-reveal restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well engine-mode ledger-mode flycheck-ledger rainbow-mode rainbow-identifiers color-identifiers-mode prodigy helm-dash dash-at-point systemd slack emojify circe oauth2 websocket ht yaml-mode web-mode web-beautify tagedit slim-mode scss-mode sass-mode reveal-in-osx-finder pug-mode pbcopy osx-trash osx-dictionary livid-mode skewer-mode simple-httpd less-css-mode launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern dash-functional tern coffee-mode unfill smeargle rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv projectile-rails rake inflections orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mwim mmm-mode minitest markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck feature-mode evil-magit magit magit-popup git-commit with-editor enh-ruby-mode diff-hl company-statistics company chruby bundler inf-ruby auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(paradox-github-token t)
+ '(ruby-align-chained-calls t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
