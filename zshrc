@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster_mod"
+ZSH_THEME="spaceship"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
@@ -36,9 +36,13 @@ eval "$(rbenv init -)"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# fasd
+eval "$(fasd --init auto)"
+
 # Emacs specifics
 if [ -n "$INSIDE_EMACS" ]; then
-    export TERM=eterm-color
+    # export TERM=eterm-color
+    export TERM=xterm-256color
     export PAGER="cat"
 else
     export TERM=xterm-256color
