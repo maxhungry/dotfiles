@@ -6,3 +6,4 @@
 --exclude=tmp
 --exclude=doc
 --exclude=node_modules
+--exclude=public

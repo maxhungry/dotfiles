@@ -29,3 +29,5 @@
 	keepBackup = false
 [mergetool "vimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED
+[init]
+	templatedir = ~/.git_template
