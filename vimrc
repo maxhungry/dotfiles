@@ -95,6 +95,8 @@ syntax enable
 let mapleader = ' '
 let maplocalleader = ' '
 
+imap fd <Esc>
+
 colorscheme gruvbox
 set background=dark
 set termguicolors
@@ -165,7 +167,7 @@ nnoremap Y y$
 nnoremap Q @q
 
 " Shortcuts
-nnoremap <leader>fs :update<cr>
+nnoremap <leader>s :update<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :qa!<cr>
 noremap  <leader>R :source $MYVIMRC<cr>
@@ -218,8 +220,7 @@ nmap <Leader>gv :GV<CR>
 " ------------------------------------------------------------------------------
 " NERDtree
 " ------------------------------------------------------------------------------
-nnoremap <leader>pt :NERDTreeToggle<cr>
-nnoremap <leader>ft :NERDTreeToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
 
 " ------------------------------------------------------------------------------
 " EasyAlign
@@ -342,9 +343,8 @@ let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_history_dir = '~/.fzf-history'
 
 " Key mappings
-nnoremap <silent> <Leader>pf :Files<CR>
 nnoremap <silent> <Leader>ff :Files<CR>
-nnoremap <silent> <Leader>sp :Ag<CR>
+nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>/ :Ag<CR>
 nnoremap <silent> <Leader>bb :Buffers<CR>
 

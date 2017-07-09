@@ -54,4 +54,9 @@ fi
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Spaceship configs
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_RUBY_SYMBOL="●"
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
