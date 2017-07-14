@@ -12,6 +12,8 @@ export KEYTIMEOUT=1
 export CLICOLOR=1
 export VISUAL=nvim
 export EDITOR=$VISUAL
+export TERM=screen-256color
+export MANPAGER="nvim -c 'set ft=man' -"
 
 unsetopt nomatch # Allow '[' and ']' for rake tasks
 setopt NO_BEEP
@@ -38,17 +40,6 @@ eval "$(rbenv init -)"
 
 # fasd
 eval "$(fasd --init auto)"
-
-# Emacs specifics
-if [ -n "$INSIDE_EMACS" ]; then
-    # export TERM=eterm-color
-    export TERM=xterm-256color
-    export PAGER="cat"
-else
-    export TERM=xterm-256color
-    # Manpages in nvim
-    export MANPAGER="nvim -c 'set ft=man' -"
-fi
 
 [ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
