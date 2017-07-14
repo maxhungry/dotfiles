@@ -1,11 +1,10 @@
-" vim: set foldmethod=marker foldlevel=0 :
 " ==============================================================================
 " VIM-PLUG {{{
 " ==============================================================================
 
 call plug#begin('~/.vim/plugged')
 
-" Edit
+" Editing
 Plug 'Raimondi/delimitMate'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dhruvasagar/vim-table-mode'
@@ -27,14 +26,15 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
+
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
+Plug 'epilande/vim-es2015-snippets'
 
 " Navigation/Interface/Display
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
-Plug 'jszakmeister/vim-togglecursor'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-over'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -58,12 +58,13 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
 Plug 'junegunn/gv.vim'
 Plug 'janko-m/vim-test'
-Plug 'w0rp/ale'
 Plug 'jgdavey/tslime.vim'
+Plug 'junegunn/vim-github-dashboard'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'codegram/vim-codereview'
 
 " Lang/Syntax/Lint
+Plug 'w0rp/ale'
 Plug 'chrisbra/csv.vim'
 " Plug 'c-brenn/phoenix.vim'
 Plug 'slashmili/alchemist.vim'
@@ -74,6 +75,8 @@ Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'junegunn/vim-emoji'
+Plug 'ternjs/tern_for_vim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
 
 " Colors/Others
 Plug 'altercation/vim-colors-solarized'
@@ -130,8 +133,6 @@ set listchars+=precedes:<
 set foldlevelstart=99
 set foldmethod=indent
 set mouse=a
-set winheight=40
-" set winminheight=5
 
 " Searching
 set incsearch  " search as char are entered
@@ -205,7 +206,7 @@ nnoremap <silent> <leader>z :call <sid>zoom()<cr>
 " ------------------------------------------------------------------------------
 " vim-fugitive
 " ------------------------------------------------------------------------------
-nnoremap <Leader>gst :Gstatus<CR>gg<c-n>
+nnoremap <Leader>gs :Gstatus<CR>gg<c-n>
 nnoremap <Leader>gd  :Gdiff<CR>
 nnoremap <Leader>gb  :Gblame<CR>
 nnoremap <Leader>ge  :Gedit<CR>
@@ -225,8 +226,8 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 " ------------------------------------------------------------------------------
 " EasyAlign
 " ------------------------------------------------------------------------------
-xmap ga  <Plug>(EasyAlign)
-nmap ga  <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 nmap gaa ga_
 
 " ------------------------------------------------------------------------------
@@ -273,13 +274,6 @@ endfunction
 function! VisualFindAndReplaceWithSelection() range
   :'<,'>OverCommandLine s/
 endfunction
-
-" ----------------------------------------------------------------------------
-" vim-togglecursor
-" ----------------------------------------------------------------------------
-let g:togglecursor_default = 'block'
-let g:togglecursor_insert = 'line'
-let g:togglecursor_replace = 'underline'
 
 " ----------------------------------------------------------------------------
 " vim-gitgutter
@@ -365,17 +359,19 @@ let g:fzf_colors =
 " ----------------------------------------------------------------------------
 " SuperTab
 " ----------------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "<c-n>"
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " ----------------------------------------------------------------------------
 " deoplete
 " ----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
 
-" inoremap <silent><expr> <C-j> pumvisible() ? "\<Down>" : "\<C-j>"
-" inoremap <silent><expr> <C-k> pumvisible() ? "\<Up>" : "\<C-k>"
 call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+
+" y tis no verk?
+" let g:SuperTabClosePreviewOnPopupClose = 1
+autocmd CompleteDone * pclose
 
 " ----------------------------------------------------------------------------
 " vim-commentary
@@ -392,6 +388,15 @@ let g:table_mode_corner_corner = '+'
 " ale
 " ----------------------------------------------------------------------------
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" ----------------------------------------------------------------------------
+" Emmet
+" ----------------------------------------------------------------------------
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 " }}}
 
 autocmd BufEnter *.vue syntax sync fromstart
