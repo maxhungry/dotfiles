@@ -7,13 +7,11 @@
 	editor = /usr/local/bin/nvim
 	excludesfile = ~/.gitignore
 [alias]
-	co = checkout
-	ci = commit
-	st = status
-	br = branch
 	hist = log --pretty=format:\"%C(yellow)%h %C(reset)%ad | %C(blue)%s%d %C(reset)[%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
+  # aupajo freshness
+  freshness = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:cyan)%(refname:short)%(color:reset) | %(committerdate:relative)%(color:reset) | %(subject)' | column -s '|' -t; }; f"
 [push]
 	default = upstream
 [color]
