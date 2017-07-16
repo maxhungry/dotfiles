@@ -118,7 +118,7 @@ SPACESHIP_HG_SYMBOL="${SPACESHIP_HG_SYMBOL:="☿ "}"
 # MERCURIAL BRANCH
 SPACESHIP_HG_BRANCH_SHOW="${SPACESHIP_HG_BRANCH_SHOW:=true}"
 SPACESHIP_HG_BRANCH_PREFIX="${SPACESHIP_HG_BRANCH_PREFIX:="$SPACESHIP_HG_SYMBOL"}"
-SPACESHIP_HG_BRANCH_SUFFIX="${SPACESHIP_HG_BRANCH_SUFFIX:="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+SPACESHIP_HG_BRANCH_SUFFIX="${SPACESHIP_HG_BRANCH_SUFFIX:=""}"
 SPACESHIP_HG_BRANCH_COLOR="${SPACESHIP_HG_BRANCH_COLOR:="magenta"}"
 # MERCURIAL STATUS
 SPACESHIP_HG_STATUS_SHOW="${SPACESHIP_HG_STATUS_SHOW:=true}"
@@ -188,7 +188,7 @@ SPACESHIP_PHP_SHOW="${SPACESHIP_PHP_SHOW:=true}"
 SPACESHIP_PHP_PREFIX="${SPACESHIP_PHP_PREFIX:="$SPACESHIP_PROMPT_DEFAULT_PREFIX"}"
 SPACESHIP_PHP_SUFFIX="${SPACESHIP_PHP_SUFFIX:="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
 SPACESHIP_PHP_SYMBOL="${SPACESHIP_PHP_SYMBOL:="🐘 "}"
-SPACEHIP_PHP_COLOR="${SPACEHIP_PHP_COLOR:="blue"}"
+SPACESHIP_PHP_COLOR="${SPACESHIP_PHP_COLOR:="blue"}"
 
 # RUST
 SPACESHIP_RUST_SHOW="${SPACESHIP_RUST_SHOW:=true}"
@@ -456,7 +456,7 @@ spaceship_dir() {
 # GIT BRANCH
 # Show current git brunch using git_current_status from Oh-My-Zsh
 spaceship_git_branch() {
-  [[ $SPACEHIP_GIT_BRANCH_SHOW == false ]] && return
+  [[ $SPACESHIP_GIT_BRANCH_SHOW == false ]] && return
 
   _is_git || return
 
@@ -521,7 +521,7 @@ spaceship_hg_branch() {
 
   _is_hg || return
 
-  local hg_branch="$(cat $PWD/.hg/branch)"
+  local hg_branch="$(cat $(command hg --cwd $PWD root)/.hg/branch)"
 
   _prompt_section \
     "$SPACESHIP_HG_BRANCH_COLOR" \
@@ -753,7 +753,7 @@ spaceship_golang() {
   [[ $SPACESHIP_GOLANG_SHOW == false ]] && return
 
   # If there are Go-specific files in current directory
-  [[ -d Godeps || -f glide.yaml || -n *.go(#qN) ]] || return
+  [[ -d Godeps || -f glide.yaml || -n *.go(#qN) || -f Gopkg.yml || -f Gopkg.lock ]] || return
 
   _exists go || return
 
@@ -779,7 +779,7 @@ spaceship_php() {
   local php_version=$(php -v 2>&1 | grep --color=never -oe "^PHP\s*[0-9.]*" | awk '{print $2}')
 
   _prompt_section \
-    "$SPACEHIP_PHP_COLOR" \
+    "$SPACESHIP_PHP_COLOR" \
     "$SPACESHIP_PHP_PREFIX" \
     "${SPACESHIP_PHP_SYMBOL}v${php_version}" \
     "${SPACESHIP_PHP_SUFFIX}"
@@ -926,11 +926,9 @@ spaceship_ember() {
   [[ $SPACESHIP_EMBER_SHOW == false ]] && return
 
   # Show EMBER status only for folders w/ ember-cli-build.js files
-  [[ -f ember-cli-build.js ]] || return
+  [[ -f ember-cli-build.js && -f node_modules/ember-cli/package.json ]] || return
 
-  _exists ember || return
-
-  local ember_version=$(ember version | grep -Po "(?<=ember-cli\: ).*$")
+  local ember_version=$(grep '"version":' ./node_modules/ember-cli/package.json | cut -d\" -f4)
   [[ $ember_version == "system" || $ember_version == "ember" ]] && return
 
   _prompt_section \
@@ -1041,7 +1039,7 @@ spaceship_char() {
 # PROMPT
 _deprecated SPACESHIP_PROMPT_TRUNC SPACESHIP_DIR_TRUNC
 # PREFIXES
-_deprecated SPACEHIP_PREFIX_SHOW SPACESHIP_PROMPT_PREFIXES_SHOW
+_deprecated SPACESHIP_PREFIX_SHOW SPACESHIP_PROMPT_PREFIXES_SHOW
 _deprecated SPACESHIP_PREFIX_TIME SPACESHIP_TIME_PREFIX
 _deprecated SPACESHIP_PREFIX_USER SPACESHIP_USER_PREFIX
 _deprecated SPACESHIP_PREFIX_HOST SPACESHIP_HOST_PREFIX

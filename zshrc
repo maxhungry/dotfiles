@@ -27,10 +27,6 @@ bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
 
-# nvm
-export NVM_DIR=~/.nvm
-. "/usr/local/opt/nvm/nvm.sh"
-
 # rbenv
 eval "$(rbenv init -)"
 
@@ -41,6 +37,9 @@ eval "$(rbenv init -)"
 # fasd
 eval "$(fasd --init auto)"
 
+# avn
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
+
 [ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -49,5 +48,6 @@ eval "$(fasd --init auto)"
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_RUBY_SYMBOL="●"
+SPACESHIP_NODE_DEFAULT_VERSION="5"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
