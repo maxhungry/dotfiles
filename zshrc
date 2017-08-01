@@ -14,6 +14,8 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export TERM=screen-256color
 export MANPAGER="nvim -c 'set ft=man' -"
+export ANDROID_HOME="/Users/maxhung/Library/Android/sdk"
+# export PATH=$PATH:/Users/maxhung/Library/Android/sdk/platform-tools
 
 unsetopt nomatch # Allow '[' and ']' for rake tasks
 setopt NO_BEEP

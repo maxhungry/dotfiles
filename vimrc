@@ -24,14 +24,17 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'mattn/emmet-vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ervandew/supertab'
+Plug 'sbdchd/neoformat'
+Plug 'chrisbra/NrrwRgn'
+Plug 'wesQ3/vim-windowswap'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'ervandew/supertab'
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 Plug 'epilande/vim-es2015-snippets'
 
-" Navigation/Interface/Display
+" Interface/Display
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -43,8 +46,8 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/TailMinusF'
 Plug 'yggdroot/indentline'
+" Plug 'vim-scripts/TailMinusF'
 
 " Integration
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
@@ -76,7 +79,7 @@ Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'junegunn/vim-emoji'
 Plug 'ternjs/tern_for_vim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 
 " Colors/Others
 Plug 'altercation/vim-colors-solarized'
