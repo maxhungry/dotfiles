@@ -1,0 +1,21 @@
+# ~/.tmuxinator/gn.yml
+
+name: gn
+root: ~/work/goodnest
+
+windows:
+  - editor: nvim
+  - console:
+      layout: 49e7,237x55,0,0[238x22,0,0{118x22,0,0,87,119x22,119,0[119x10,119,0,88,119x11,119,11,92]},238x16,0,23,89,238x15,0,40,91]
+      panes:
+        - bin/rails s
+        - bin/webpack-dev-server --hot --host local.goodnest.co.nz
+        - sidekiq
+        - bin/rails c
+        -
+  - config:
+      root: ~/.dotfiles
+      panes:
+        - nvim
+  - etc:
+    root: ~/development
