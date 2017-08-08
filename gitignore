@@ -43,3 +43,7 @@ tags
 # rbenv #
 #########
 .rbenv-vars
+
+# tern #
+#########
+.tern-port

@@ -25,7 +25,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 Plug 'chrisbra/NrrwRgn'
 Plug 'wesQ3/vim-windowswap'
 " Plug 'terryma/vim-multiple-cursors'
@@ -390,7 +390,16 @@ let g:table_mode_corner_corner = '+'
 " ----------------------------------------------------------------------------
 " ale
 " ----------------------------------------------------------------------------
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <F8> <Plug>(ale_fix)
+let g:ale_fixers = {
+\   'javascript': [
+\       'eslint',
+\       'prettier'
+\   ],
+\}
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_fix_on_save = 1
 
 " ----------------------------------------------------------------------------
 " Emmet
@@ -400,6 +409,11 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
-" }}}
 
+" ----------------------------------------------------------------------------
+" tern
+" ----------------------------------------------------------------------------
+let g:tern_map_keys = 1
+
+" }}}
 autocmd BufEnter *.vue syntax sync fromstart
