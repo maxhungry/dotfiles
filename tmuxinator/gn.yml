@@ -1,6 +1,6 @@
 # ~/.tmuxinator/gn.yml
 
-name: gn
+name: gn-backend
 root: ~/work/goodnest
 
 windows:
