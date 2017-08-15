@@ -25,9 +25,10 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'sbdchd/neoformat'
 Plug 'chrisbra/NrrwRgn'
 Plug 'wesQ3/vim-windowswap'
+Plug 'editorconfig/editorconfig-vim'
+" Plug 'sbdchd/neoformat'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'ervandew/supertab'
 
@@ -201,6 +202,11 @@ function! s:zoom()
   endif
 endfunction
 nnoremap <silent> <leader>z :call <sid>zoom()<cr>
+
+" buffers
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bn :bn<CR>
+
 " }}}
 " ==============================================================================
 " PLUGINS {{{
@@ -398,7 +404,7 @@ let g:ale_fixers = {
 \       'prettier'
 \   ],
 \}
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 let g:ale_fix_on_save = 1
 
 " ----------------------------------------------------------------------------
