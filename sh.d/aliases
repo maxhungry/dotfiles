@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-alias ls="ls -GFh"
+alias ls="exa"
+alias la="ls -a"
 alias ember="./node_modules/.bin/ember"
 alias git=hub
 alias vim=nvim
