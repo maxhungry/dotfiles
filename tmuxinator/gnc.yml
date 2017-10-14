@@ -1,7 +1,7 @@
-# ~/.tmuxinator/gnm.yml
+# ~/.tmuxinator/gnc.yml
 
-name: gn-mobile
-root: ~/work/GoodnestWorker
+name: m-consumer
+root: ~/work/GoodnestConsumer
 
 windows:
   - editor: nvim

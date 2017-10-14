@@ -28,6 +28,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chrisbra/NrrwRgn'
 Plug 'wesQ3/vim-windowswap'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-sleuth'
 " Plug 'sbdchd/neoformat'
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'ervandew/supertab'
@@ -421,5 +422,9 @@ let g:user_emmet_settings = {
 " ----------------------------------------------------------------------------
 let g:tern_map_keys = 1
 
+" ----------------------------------------------------------------------------
+" vim-javascript
+" ----------------------------------------------------------------------------
+let g:javascript_plugin_flow = 1
 " }}}
 autocmd BufEnter *.vue syntax sync fromstart

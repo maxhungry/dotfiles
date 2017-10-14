@@ -17,7 +17,11 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="$HOME/.fastlane/bin:$PATH"
 # export PATH=$PATH:/Users/maxhung/Library/Android/sdk/platform-tools
+
+export ANDROID_SDK=$HOME/android-sdk-macosx
+export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
 
 unsetopt nomatch # Allow '[' and ']' for rake tasks
 setopt NO_BEEP
