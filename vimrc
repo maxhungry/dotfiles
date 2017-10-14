@@ -75,7 +75,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
@@ -95,39 +95,63 @@ call plug#end()
 
 " }}}
 " ==============================================================================
+" DEFAULTS {{{
+" ==============================================================================
+let mapleader = ' '
+let maplocalleader = ' '
+
+set textwidth=80
+set expandtab    " Always expand tabs to spaces
+set tabstop=2    " A tab expand to 2 spaces
+set shiftwidth=2 " Indent is 2 spaces
+
+set cursorline
+set number
+
+set scrolloff=3
+set sidescrolloff=3
+
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+set mouse=a
+
+set incsearch  " Search as chars entered
+set ignorecase
+set smartcase  " Unless they contain at least one capital letter
+set hlsearch
+
+" }}}
+
+" ==============================================================================
 " GENERAL SETTINGS {{{
 " ==============================================================================
 filetype plugin indent on
 syntax enable
 
-let mapleader = ' '
-let maplocalleader = ' '
-
 imap fd <Esc>
 
 colorscheme gruvbox
+let g:gruvbox_invert_selection=0
+
 set background=dark
 set termguicolors
 
 set laststatus=2
 set relativenumber
-set number
 set showcmd
-set cursorline
 set wildmenu
 set lazyredraw " No redrawing during macros
 set showmatch
-set textwidth=0
 set regexpengine=1
 set completeopt=menuone,preview,longest
-set scrolloff=5
 set autoread
 set clipboard=unnamed
 set noerrorbells visualbell t_vb= " No bells
 set nowrap
-set tabstop=2
-set shiftwidth=2                  " an autoindent (with <<) is two spaces
-set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
 set listchars=""                  " Reset the listchars
@@ -137,19 +161,6 @@ set listchars+=extends:>
 set listchars+=precedes:<
 set foldlevelstart=99
 set foldmethod=indent
-set mouse=a
-
-" Searching
-set incsearch  " search as char are entered
-set hlsearch
-set ignorecase
-set smartcase  " unless they contain at least one capital letter
-
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
 
 set nostartofline
 set history=10000
@@ -397,7 +408,7 @@ let g:table_mode_corner_corner = '+'
 " ----------------------------------------------------------------------------
 " ale
 " ----------------------------------------------------------------------------
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap <F8> <Plug>(ale_fix)
 let g:ale_fixers = {
 \   'javascript': [
