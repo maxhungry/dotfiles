@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 
-alias ls="exa"
-alias la="ls -a"
+alias cask="brew cask"
 alias ember="./node_modules/.bin/ember"
 alias git=hub
-alias vim=nvim
-alias v=nvim
-alias cask="brew cask"
+alias la="ls -a"
+alias ls="exa"
 alias rn="react-native"
+alias v=nvim
+alias vr=vimr
+alias vim=nvim
 
 alias mv="mv -v"
 alias rm="rm -i -v"

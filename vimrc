@@ -6,33 +6,31 @@ call plug#begin('~/.vim/plugged')
 
 " Editing
 Plug 'Raimondi/delimitMate'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'andrewradev/splitjoin.vim'
+Plug 'chrisbra/NrrwRgn'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'eugen0329/vim-esearch'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-user'
+Plug 'mattn/emmet-vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-capslock'
-Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'mattn/emmet-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'chrisbra/NrrwRgn'
 Plug 'wesQ3/vim-windowswap'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-sleuth'
-" Plug 'sbdchd/neoformat'
-" Plug 'terryma/vim-multiple-cursors'
 " Plug 'ervandew/supertab'
-
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 Plug 'epilande/vim-es2015-snippets'
 
@@ -42,17 +40,20 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-over'
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yggdroot/indentline'
-" Plug 'vim-scripts/TailMinusF'
 
 " Integration
+Plug 'janko-m/vim-test'
+Plug 'jgdavey/tslime.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/vim-github-dashboard'
 Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-bundler'
@@ -61,35 +62,29 @@ Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
-Plug 'junegunn/gv.vim'
-Plug 'janko-m/vim-test'
-Plug 'jgdavey/tslime.vim'
-Plug 'junegunn/vim-github-dashboard'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'codegram/vim-codereview'
 
 " Lang/Syntax/Lint
-Plug 'w0rp/ale'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 Plug 'chrisbra/csv.vim'
-" Plug 'c-brenn/phoenix.vim'
-Plug 'slashmili/alchemist.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
-" Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'junegunn/vim-emoji'
 Plug 'ngmy/vim-rubocop'
+Plug 'sheerun/vim-polyglot'
+Plug 'slashmili/alchemist.vim'
+Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
-Plug 'junegunn/vim-emoji'
-Plug 'ternjs/tern_for_vim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
+Plug 'w0rp/ale'
 
 " Colors/Others
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
-Plug 'vim-scripts/ingo-library'
 Plug 'rhysd/vim-grammarous'
+Plug 'vim-scripts/ingo-library'
 
 call plug#end()
 
@@ -107,6 +102,7 @@ set shiftwidth=2 " Indent is 2 spaces
 
 set cursorline
 set number
+set relativenumber
 
 set scrolloff=3
 set sidescrolloff=3
@@ -141,7 +137,6 @@ set background=dark
 set termguicolors
 
 set laststatus=2
-set relativenumber
 set showcmd
 set wildmenu
 set lazyredraw " No redrawing during macros
@@ -231,8 +226,8 @@ nnoremap <Leader>gs :Gstatus<CR>gg<c-n>
 nnoremap <Leader>gd  :Gdiff<CR>
 nnoremap <Leader>gb  :Gblame<CR>
 nnoremap <Leader>ge  :Gedit<CR>
-nnoremap <Leader>gc  :Gcommit   -v<CR>
 nnoremap <Leader>gps :Dispatch! :Gpush<CR>
+nnoremap <Leader>gco :Git checkout 
 
 " ------------------------------------------------------------------------------
 " GV.vim
@@ -409,7 +404,6 @@ let g:table_mode_corner_corner = '+'
 " ale
 " ----------------------------------------------------------------------------
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-nmap <F8> <Plug>(ale_fix)
 let g:ale_fixers = {
 \   'javascript': [
 \       'eslint',
