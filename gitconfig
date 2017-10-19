@@ -1,31 +1,31 @@
 [user]
-	name = Max Hung
-	email = info@maxhung.co.nz
-	username = maxhungry
+  name = Max Hung
+  email = info@maxhung.co.nz
+  username = maxhungry
 [core]
-	autocrlf = input
-	editor = /usr/local/bin/nvim
-	excludesfile = ~/.gitignore
+  autocrlf = input
+  editor = /usr/local/bin/nvim
+  excludesfile = ~/.gitignore
 [alias]
-	hist = log --pretty=format:\"%C(yellow)%h %C(reset)%ad | %C(blue)%s%d %C(reset)[%an]\" --graph --date=short
-	type = cat-file -t
-	dump = cat-file -p
+  hist = log --pretty=format:\"%C(yellow)%h %C(reset)%ad | %C(blue)%s%d %C(reset)[%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
   # aupajo freshness
   freshness = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:cyan)%(refname:short)%(color:reset) | %(committerdate:relative)%(color:reset) | %(subject)' | column -s '|' -t; }; f"
 [push]
-	default = upstream
+  default = upstream
 [color]
-	ui = true
+  ui = true
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 [mergetool]
   prompt = true
-	keepBackup = false
+  keepBackup = false
 [mergetool "vimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
