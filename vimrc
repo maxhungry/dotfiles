@@ -6,11 +6,12 @@ call plug#begin('~/.vim/plugged')
 
 " Editing
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'andrewradev/splitjoin.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'ecomba/vim-ruby-refactoring'
+" Plug 'ecomba/vim-ruby-refactoring'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eugen0329/vim-esearch'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
@@ -33,12 +34,14 @@ Plug 'wesQ3/vim-windowswap'
 " Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 Plug 'epilande/vim-es2015-snippets'
+" Plug 'Quramy/vim-js-pretty-template'
 
 " Interface/Display
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
 Plug 'osyo-manga/vim-over'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -66,12 +69,15 @@ Plug 'tpope/vim-rbenv'
 " Plug 'codegram/vim-codereview'
 
 " Lang/Syntax/Lint
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
+Plug 'sheerun/vim-polyglot'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'jparise/vim-Graphql'
+Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite' }
+Plug 'cfdrake/vim-pbxproj'
 Plug 'chrisbra/csv.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/vim-emoji'
 Plug 'ngmy/vim-rubocop'
-Plug 'sheerun/vim-polyglot'
 Plug 'slashmili/alchemist.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-markdown'
@@ -155,7 +161,7 @@ set listchars+=trail:.
 set listchars+=extends:>
 set listchars+=precedes:<
 set foldlevelstart=99
-set foldmethod=indent
+" set foldmethod=indent
 
 set nostartofline
 set history=10000
@@ -222,12 +228,14 @@ nnoremap <leader>bn :bn<CR>
 " ------------------------------------------------------------------------------
 " vim-fugitive
 " ------------------------------------------------------------------------------
-nnoremap <Leader>gs :Gstatus<CR>gg<c-n>
-nnoremap <Leader>gd  :Gdiff<CR>
+" nnoremap <Leader>gs  :Gstatus<CR><C-w>T
+nnoremap <Leader>gs  :tabedit %<CR>:Gstatus<CR>
+nnoremap <Leader>gdd :Git diff<CR>
+nnoremap <Leader>gdc :Gdiff<CR>
 nnoremap <Leader>gb  :Gblame<CR>
 nnoremap <Leader>ge  :Gedit<CR>
 nnoremap <Leader>gps :Dispatch! :Gpush<CR>
-nnoremap <Leader>gco :Git checkout 
+nnoremap <Leader>gco :Git checkout
 
 " ------------------------------------------------------------------------------
 " GV.vim
@@ -353,10 +361,8 @@ let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_history_dir = '~/.fzf-history'
 
 " Key mappings
-nnoremap <silent> <Leader>ff :Files<CR>
 nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>/ :Ag<CR>
-nnoremap <silent> <Leader>bb :Buffers<CR>
 
 let g:fzf_colors =
 \ { 'fg':      ['GruvboxFg0', 'Normal'],
@@ -379,15 +385,8 @@ let g:fzf_colors =
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " ----------------------------------------------------------------------------
-" deoplete
+" nvim-completion-manager
 " ----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
-
-" y tis no verk?
-" let g:SuperTabClosePreviewOnPopupClose = 1
-autocmd CompleteDone * pclose
 
 " ----------------------------------------------------------------------------
 " vim-commentary
@@ -404,6 +403,9 @@ let g:table_mode_corner_corner = '+'
 " ale
 " ----------------------------------------------------------------------------
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {
+\   'ruby': ['rubocop']
+\}
 let g:ale_fixers = {
 \   'javascript': [
 \       'eslint',
@@ -412,6 +414,9 @@ let g:ale_fixers = {
 \}
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 let g:ale_fix_on_save = 1
+
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " ----------------------------------------------------------------------------
 " Emmet
@@ -431,5 +436,34 @@ let g:tern_map_keys = 1
 " vim-javascript
 " ----------------------------------------------------------------------------
 let g:javascript_plugin_flow = 1
+
+"if has('autocmd')
+    "call jspretmpl#register_tag('gql', 'graphql')
+    " Use sass highlighting for `styled.span` / `styled.div` / etc
+    "call jspretmpl#register_tag('\v(styled\.\w+)', 'css')
+    "autocmd FileType javascript JsPreTmpl html
+"endif
+
+" ----------------------------------------------------------------------------
+" vim-jsx
+" ----------------------------------------------------------------------------
+let g:jsx_ext_required = 0
+" let g:xml_syntax_folding=1
+
+" ----------------------------------------------------------------------------
+" vim-startify
+" ----------------------------------------------------------------------------
+let g:startify_change_to_dir = 1
+let g:startify_bookmarks = [
+      \ {'v': '~/.dotfiles/vimrc'},
+      \ {'wg': '~/work/goodnest'},
+      \ {'wc': '~/work/GoodnestConsumer'},
+      \ {'ww': '~/work/GoodnestWorker'},
+      \ ]
+
+" ----------------------------------------------------------------------------
+" vim-vue
+" ----------------------------------------------------------------------------
+let g:vue_disable_pre_processors=1
+
 " }}}
-autocmd BufEnter *.vue syntax sync fromstart
