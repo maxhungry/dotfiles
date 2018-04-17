@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
 export KEYTIMEOUT=1
 export CLICOLOR=1
-export VISUAL=nvim
+export VISUAL=vim
 export EDITOR=$VISUAL
 export TERM=screen-256color
 export MANPAGER="nvim -c 'set ft=man' -"
@@ -27,7 +27,6 @@ export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
 
 unsetopt nomatch # Allow '[' and ']' for rake tasks
 setopt NO_BEEP
-bindkey -v
 autoload -U colors # Enable color output
 colors
 
@@ -36,6 +35,7 @@ bindkey "^E" end-of-line
 bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
+bindkey -v
 
 # rbenv
 eval "$(rbenv init -)"

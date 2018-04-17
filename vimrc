@@ -29,6 +29,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-dadbod'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wesQ3/vim-windowswap'
 " Plug 'ervandew/supertab'
@@ -72,7 +73,7 @@ Plug 'tpope/vim-rbenv'
 Plug 'sheerun/vim-polyglot'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jparise/vim-Graphql'
-Plug 'styled-components/vim-styled-components', { 'branch': 'rewrite' }
+Plug 'styled-components/vim-styled-components'
 Plug 'cfdrake/vim-pbxproj'
 Plug 'chrisbra/csv.vim'
 Plug 'elixir-lang/vim-elixir'
@@ -167,7 +168,7 @@ set nostartofline
 set history=10000
 
 let g:python_host_prog = '/usr/local/bin/python'
-let g:python4_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Spell check
 set spell spelllang=en_nz
