@@ -14,14 +14,15 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 export TERM=screen-256color
 export MANPAGER="nvim -c 'set ft=man' -"
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+# react-native
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH="$HOME/.fastlane/bin:$PATH"
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
 # export PATH=$PATH:/Users/maxhung/Library/Android/sdk/platform-tools
 
-# react-native
 export ANDROID_SDK=$HOME/android-sdk-macosx
 export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
 
@@ -41,8 +42,8 @@ bindkey -v
 eval "$(rbenv init -)"
 
 # asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
 
 # fasd
 eval "$(fasd --init auto)"
@@ -58,7 +59,7 @@ eval "$(fasd --init auto)"
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_RUBY_SYMBOL="●"
-SPACESHIP_NODE_DEFAULT_VERSION="5"
+SPACESHIP_NODE_SYMBOL="⬢"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
