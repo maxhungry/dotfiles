@@ -2,20 +2,19 @@
 
 name: gn-backend
 root: ~/work/goodnest
+attach: false
 
 windows:
-  - editor: nvim
   - console:
-      layout: 49e7,237x55,0,0[238x22,0,0{118x22,0,0,87,119x22,119,0[119x10,119,0,88,119x11,119,11,92]},238x16,0,23,89,238x15,0,40,91]
+      layout: 5a2e,192x55,0,0[193x22,0,0{95x22,0,0,0,97x22,96,0[97x7,96,0,3,97x7,96,8,4,97x6,96,16,5]},193x16,0,23,6,193x15,0,40,7]
       panes:
         - bin/rails s
         - bin/webpack-dev-server --hot --host local.goodnest.co.nz
+        - cd docker && docker-compose up
         - sidekiq
         - bin/rails c
         -
   - config:
       root: ~/.dotfiles
-      panes:
-        - nvim
   - etc:
     root: ~/development
