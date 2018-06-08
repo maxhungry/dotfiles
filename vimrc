@@ -172,6 +172,11 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Spell check
 set spell spelllang=en_nz
+
+" File types
+" Fastlane
+au BufRead,BufNewFile Fastfile,Appfile,Matchfile,Pluginfile set filetype=ruby
+
 " }}}
 " ==============================================================================
 " MAPPINGS {{{
