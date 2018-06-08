@@ -2,6 +2,7 @@
   name = Max Hung
   email = info@maxhung.co.nz
   username = maxhungry
+  signingkey = 5FBD72443C78BE8B
 [core]
   autocrlf = input
   editor = /usr/local/bin/nvim

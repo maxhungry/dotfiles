@@ -26,6 +26,8 @@ export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Hom
 export ANDROID_SDK=$HOME/android-sdk-macosx
 export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
 
+export GPG_TTY=$(tty)
+
 unsetopt nomatch # Allow '[' and ']' for rake tasks
 setopt NO_BEEP
 autoload -U colors # Enable color output
@@ -40,10 +42,6 @@ bindkey -v
 
 # rbenv
 eval "$(rbenv init -)"
-
-# asdf
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
 
 # fasd
 eval "$(fasd --init auto)"
