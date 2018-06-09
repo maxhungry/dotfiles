@@ -473,3 +473,7 @@ let g:startify_bookmarks = [
 let g:vue_disable_pre_processors=1
 
 " }}}
+
+if exists('g:gui_oni')
+  au FileType fzf tnoremap <nowait><buffer> <esc> <c-g> "Close FZF in neovim with esc
+endif
