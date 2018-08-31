@@ -417,8 +417,12 @@ let g:ale_fixers = {
 \       'eslint',
 \       'prettier'
 \   ],
+\   'vue': [
+\       'prettier'
+\   ]
 \}
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
 
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
