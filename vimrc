@@ -39,7 +39,6 @@ Plug 'epilande/vim-es2015-snippets'
 
 " Interface/Display
 Plug 'airblade/vim-gitgutter'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
@@ -93,6 +92,10 @@ Plug 'morhetz/gruvbox'
 Plug 'rhysd/vim-grammarous'
 Plug 'vim-scripts/ingo-library'
 
+if !exists('g:gui_oni')
+  Plug 'christoomey/vim-tmux-navigator'
+endif
+
 call plug#end()
 
 " }}}
@@ -143,7 +146,7 @@ let g:gruvbox_invert_selection=0
 set background=dark
 set termguicolors
 
-set laststatus=2
+set laststatus=0
 set showcmd
 set wildmenu
 set lazyredraw " No redrawing during macros
@@ -251,7 +254,9 @@ nmap <Leader>gv :GV<CR>
 " ------------------------------------------------------------------------------
 " NERDtree
 " ------------------------------------------------------------------------------
-nnoremap <leader>n :NERDTreeToggle<cr>
+if !exists('g:gui_oni')
+  nnoremap <leader>n :NERDTreeToggle<cr>
+endif
 
 " ------------------------------------------------------------------------------
 " EasyAlign
@@ -384,6 +389,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+if exists('g:gui_oni')
+  au FileType fzf tnoremap <nowait><buffer> <esc> <c-g> "Close FZF in neovim with esc
+endif
+
 " ----------------------------------------------------------------------------
 " SuperTab
 " ----------------------------------------------------------------------------
@@ -477,7 +486,3 @@ let g:startify_bookmarks = [
 let g:vue_disable_pre_processors=1
 
 " }}}
-
-if exists('g:gui_oni')
-  au FileType fzf tnoremap <nowait><buffer> <esc> <c-g> "Close FZF in neovim with esc
-endif
