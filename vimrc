@@ -43,9 +43,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
 Plug 'osyo-manga/vim-over'
-Plug 'radenling/vim-dispatch-neovim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch' | Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -77,7 +76,7 @@ Plug 'cfdrake/vim-pbxproj'
 Plug 'chrisbra/csv.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/vim-emoji'
-Plug 'ngmy/vim-rubocop'
+" Plug 'ngmy/vim-rubocop'
 Plug 'slashmili/alchemist.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-markdown'
@@ -85,15 +84,21 @@ Plug 'vim-scripts/SyntaxRange'
 Plug 'w0rp/ale'
 
 " Colors/Others
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 Plug 'rhysd/vim-grammarous'
 Plug 'vim-scripts/ingo-library'
+Plug 'junegunn/vader.vim'
 
 if !exists('g:gui_oni')
   Plug 'christoomey/vim-tmux-navigator'
+else
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-H> <C-W><C-H>
 endif
 
 call plug#end()
@@ -229,6 +234,15 @@ nnoremap <silent> <leader>z :call <sid>zoom()<cr>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 
+nmap <silent> tt :tabnew<CR>
+nmap <silent> [g :tabprevious<CR>
+nmap <silent> ]g :tabnext<CR>
+nmap <silent> [G :tabrewind<CR>
+nmap <silent> ]G :tablast<CR>
+
+" vue syntax sync from start
+nnoremap <leader>vs :syntax sync fromstart<CR>
+
 " }}}
 " ==============================================================================
 " PLUGINS {{{
@@ -278,7 +292,7 @@ nnoremap <F5> :GundoToggle<CR>
 " ------------------------------------------------------------------------------
 " matchit.vim
 " ------------------------------------------------------------------------------
-runtime! macros/matchit.vim
+runtime macros/matchit.vim
 
 " ------------------------------------------------------------------------------
 " vim-emoji
@@ -417,9 +431,12 @@ let g:table_mode_corner_corner = '+'
 " ----------------------------------------------------------------------------
 " ale
 " ----------------------------------------------------------------------------
+nnoremap <leader>fi :ALEFix importjs<CR>
+
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
-\   'ruby': ['rubocop']
+\   'ruby': ['rubocop'],
+\   'javascript': ['eslint', 'flow']
 \}
 let g:ale_fixers = {
 \   'javascript': [
@@ -428,11 +445,15 @@ let g:ale_fixers = {
 \   ],
 \   'vue': [
 \       'prettier'
-\   ]
+\   ],
+\   'ruby': ['rubocop']
 \}
 " let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
+
+let g:ale_ruby_rubocop_executable = 'bundle'
+
 
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
