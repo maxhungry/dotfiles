@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 " Editing
 Plug 'Raimondi/delimitMate'
-Plug 'roxma/nvim-completion-manager'
+" Plug 'roxma/nvim-completion-manager'
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'andrewradev/splitjoin.vim'
 Plug 'chrisbra/NrrwRgn'
@@ -288,11 +288,6 @@ let g:mustache_abbreviations = 1
 " gundo
 " ------------------------------------------------------------------------------
 nnoremap <F5> :GundoToggle<CR>
-
-" ------------------------------------------------------------------------------
-" matchit.vim
-" ------------------------------------------------------------------------------
-runtime macros/matchit.vim
 
 " ------------------------------------------------------------------------------
 " vim-emoji
