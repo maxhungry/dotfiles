@@ -18,6 +18,12 @@ bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
 bindkey -v
 
+# rbenv
+eval "$(rbenv init -)"
+
+# fasd
+eval "$(fasd --init auto)"
+
 # avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
 
@@ -41,9 +47,11 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -f /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
 # Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
-
-# Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/maxhung/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/maxhung/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/completion.zsh.inc'; fi

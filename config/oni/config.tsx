@@ -32,13 +32,14 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 }
 
 export const configuration = {
-    "debug.neovimPath": "/usr/local/bin/nvim",
+    // "debug.neovimPath": "/usr/local/bin/nvim",
+    "debug.neovimPath": "/usr/local/Cellar/neovim/0.3.1/bin/nvim",
     "oni.hideMenu": "hidden",
     "oni.loadInitVim": true,
     "oni.useDefaultConfig": false,
 
-    "editor.fontSize": "13px",
-    "editor.fontFamily": "FiraCode-Regular",
+    "editor.fontSize": "15px",
+    // "editor.fontFamily": "FiraCode-Regular",
     "editor.completions.enabled": true,
 
     "ui.colorscheme"  : "gruvbox",
@@ -75,6 +76,6 @@ export const configuration = {
 
     // UI customizations
     "ui.animations.enabled": true,
-    "ui.fontSmoothing": "auto",
+    "ui.fontSmoothing": "subpixel-antialiased",
     "editor.renderer": "webgl",
 }

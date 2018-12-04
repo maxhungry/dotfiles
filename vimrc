@@ -7,7 +7,6 @@ call plug#begin('~/.vim/plugged')
 " Editing
 Plug 'Raimondi/delimitMate'
 " Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'andrewradev/splitjoin.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dhruvasagar/vim-table-mode'
@@ -32,10 +31,17 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dadbod'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wesQ3/vim-windowswap'
-" Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 Plug 'epilande/vim-es2015-snippets'
-" Plug 'Quramy/vim-js-pretty-template'
+
+" NCM2
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-match-highlight'
+Plug 'ncm2/ncm2-ultisnips' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tern'
+Plug 'ncm2/ncm2-cssomni'
 
 " Interface/Display
 Plug 'airblade/vim-gitgutter'
