@@ -32,6 +32,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wesQ3/vim-windowswap'
 Plug 'epilande/vim-es2015-snippets'
+Plug 'galooshi/vim-import-js'
 
 " NCM2
 Plug 'ncm2/ncm2'
@@ -430,9 +431,15 @@ nmap gcc <Plug>CommentaryLine
 let g:table_mode_corner_corner = '+'
 
 " ----------------------------------------------------------------------------
+" import-js
+" ----------------------------------------------------------------------------
+nnoremap <Leader>ij :ImportJSWord<CR>
+nnoremap <Leader>ii :ImportJSFix<CR>
+nnoremap <Leader>ig :ImportJSGoto<CR>
+
+" ----------------------------------------------------------------------------
 " ale
 " ----------------------------------------------------------------------------
-nnoremap <leader>fi :ALEFix importjs<CR>
 
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
