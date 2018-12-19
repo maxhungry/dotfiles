@@ -250,6 +250,12 @@ nmap <silent> ]G :tablast<CR>
 " vue syntax sync from start
 nnoremap <leader>vs :syntax sync fromstart<CR>
 
+" ------------------------------------------------------------------------------
+" Tags - javascript
+" ------------------------------------------------------------------------------
+autocmd FileType javascript nnoremap <buffer> <C-]> :ImportJSGoto<CR>
+autocmd FileType javascript nnoremap <buffer> <C-t> :bprevious<CR>
+
 " }}}
 " ==============================================================================
 " PLUGINS {{{
