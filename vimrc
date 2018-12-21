@@ -224,6 +224,9 @@ vnoremap <leader>p "_dP
 nnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 xnoremap <Leader>fh :s/:\([^=,'"]*\) =>/\1:/g<CR>
 
+" Prettify json
+nnoremap <leader>fj :%!python -m json.tool<CR>
+
 nnoremap <Leader>T :tabedit %<CR>
 
 " Zoom (junegunn)
