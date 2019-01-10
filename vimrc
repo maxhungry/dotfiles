@@ -71,6 +71,7 @@ Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv'
+Plug 'jreybert/vimagit'
 " Plug 'junkblocker/patchreview-vim'
 " Plug 'codegram/vim-codereview'
 
@@ -265,9 +266,14 @@ autocmd FileType javascript nnoremap <buffer> <C-t> :bprevious<CR>
 " ==============================================================================
 
 " ------------------------------------------------------------------------------
+" vimagit
+" ------------------------------------------------------------------------------
+let g:magit_show_magit_mapping='gm'
+let g:magit_discard_untracked_do_delete=1
+
+" ------------------------------------------------------------------------------
 " vim-fugitive
 " ------------------------------------------------------------------------------
-" nnoremap <Leader>gs  :Gstatus<CR><C-w>T
 nnoremap <Leader>gs  :tabedit %<CR>:Gstatus<CR>
 nnoremap <Leader>gdd :Git diff<CR>
 nnoremap <Leader>gdc :Gdiff<CR>
