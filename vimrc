@@ -167,7 +167,7 @@ set showmatch
 set regexpengine=1
 set completeopt=menuone,preview,longest
 set autoread
-set clipboard=unnamed
+set clipboard=unnamedplus
 set noerrorbells visualbell t_vb= " No bells
 set nowrap
 set list                          " Show invisible characters

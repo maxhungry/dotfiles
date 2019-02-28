@@ -6,6 +6,7 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 export KEYTIMEOUT=1
