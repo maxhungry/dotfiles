@@ -79,7 +79,7 @@ Plug 'jreybert/vimagit'
 Plug 'sheerun/vim-polyglot'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jparise/vim-Graphql'
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'tag': 'v2.9' }
 Plug 'cfdrake/vim-pbxproj'
 Plug 'chrisbra/csv.vim'
 Plug 'elixir-lang/vim-elixir'
