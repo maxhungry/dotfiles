@@ -18,8 +18,8 @@ export MANPAGER="nvim -c 'set ft=man' -"
 
 # react-native
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
-# export PATH=$PATH:/Users/maxhung/Library/Android/sdk/platform-tools
+# export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
+export JAVA_HOME="/usr/local/android-studio/jre"
 
 export ANDROID_SDK=$HOME/android-sdk-macosx
 export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e

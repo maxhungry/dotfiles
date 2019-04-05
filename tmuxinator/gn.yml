@@ -6,7 +6,8 @@ attach: false
 
 windows:
   - editor:
-    - nvim
+    panes:
+      - nvim
   - console:
       layout: 5a2e,192x55,0,0[193x22,0,0{95x22,0,0,0,97x22,96,0[97x7,96,0,3,97x7,96,8,4,97x6,96,16,5]},193x16,0,23,6,193x15,0,40,7]
       panes:
@@ -17,6 +18,6 @@ windows:
         - bin/rails c
         -
   - config:
-      root: ~/.dotfiles
+    root: ~/.dotfiles
   - etc:
     root: ~/development
