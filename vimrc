@@ -1,3 +1,5 @@
+let s:uname = system("uname -s")
+
 " ==============================================================================
 " VIM-PLUG {{{
 " ==============================================================================
@@ -167,7 +169,7 @@ set showmatch
 set regexpengine=1
 set completeopt=menuone,preview,longest
 set autoread
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set noerrorbells visualbell t_vb= " No bells
 set nowrap
 set list                          " Show invisible characters
@@ -183,8 +185,13 @@ set foldlevelstart=99
 set nostartofline
 set history=10000
 
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+if s:uname == "Darwin"
+  let g:python_host_prog = '/usr/local/bin/python'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+else
+  let g:python_host_prog = '/usr/bin/python'
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
 
 " Spell check
 set spell spelllang=en_nz

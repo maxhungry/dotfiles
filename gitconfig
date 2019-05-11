@@ -5,7 +5,7 @@
   signingkey = 5FBD72443C78BE8B
 [core]
   autocrlf = input
-  editor = /usr/bin/nvim
+  editor = $EDITOR
   excludesfile = ~/.gitignore
   pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
