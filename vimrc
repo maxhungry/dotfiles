@@ -1,7 +1,6 @@
 " ==============================================================================
 " VIM-PLUG {{{
 " ==============================================================================
-
 call plug#begin('~/.vim/plugged')
 
 " Editing
@@ -77,6 +76,7 @@ Plug 'jreybert/vimagit'
 
 " Lang/Syntax/Lint
 Plug 'sheerun/vim-polyglot'
+Plug 'ianks/vim-tsx'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jparise/vim-Graphql'
 Plug 'styled-components/vim-styled-components', { 'tag': 'v2.9' }
@@ -183,8 +183,8 @@ set foldlevelstart=99
 set nostartofline
 set history=10000
 
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " Spell check
 set spell spelllang=en_nz
@@ -259,6 +259,9 @@ nnoremap <leader>vs :syntax sync fromstart<CR>
 " ------------------------------------------------------------------------------
 autocmd FileType javascript nnoremap <buffer> <C-]> :ImportJSGoto<CR>
 autocmd FileType javascript nnoremap <buffer> <C-t> :bprevious<CR>
+
+autocmd FileType typescript nnoremap <buffer> <C-]> :ImportJSGoto<CR>
+autocmd FileType typescript nnoremap <buffer> <C-t> :bprevious<CR>
 
 " }}}
 " ==============================================================================
@@ -456,12 +459,16 @@ nnoremap <Leader>ig :ImportJSGoto<CR>
 " ale
 " ----------------------------------------------------------------------------
 
+let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['eslint', 'flow']
 \}
 let g:ale_fixers = {
+\   'typescript': [
+\       'tslint'
+\   ],
 \   'javascript': [
 \       'eslint',
 \       'prettier'
