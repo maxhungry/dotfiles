@@ -1,4 +1,4 @@
-ZSH_THEME="pygmalion"
+ZSH_THEME="spaceship"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
@@ -48,10 +48,6 @@ fi
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
-
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/maxhung/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/path.zsh.inc'; fi
