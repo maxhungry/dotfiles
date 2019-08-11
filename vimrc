@@ -35,15 +35,20 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'galooshi/vim-import-js'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
 " NCM2
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-match-highlight'
-Plug 'ncm2/ncm2-ultisnips' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
-Plug 'ncm2/ncm2-html-subscope'
-Plug 'ncm2/ncm2-markdown-subscope'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tern'
-Plug 'ncm2/ncm2-cssomni'
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" " Plug 'ncm2/ncm2-match-highlight'
+" Plug 'ncm2/ncm2-ultisnips' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
+" Plug 'ncm2/ncm2-html-subscope'
+" Plug 'ncm2/ncm2-markdown-subscope'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tern'
+" Plug 'ncm2/ncm2-cssomni'
+
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 
 " Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -92,6 +97,8 @@ Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'w0rp/ale'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'Quramy/tsuquyomi'
 
 " Colors/Others
 " Plug 'altercation/vim-colors-solarized'
@@ -145,6 +152,7 @@ set ignorecase
 set smartcase  " Unless they contain at least one capital letter
 set hlsearch
 
+set signcolumn=yes
 " }}}
 
 " ==============================================================================
@@ -167,7 +175,9 @@ set wildmenu
 set lazyredraw " No redrawing during macros
 set showmatch
 set regexpengine=1
-set completeopt=menuone,preview,longest
+"set completeopt=menuone,preview,longest
+" ncm2 :help Ncm2PopupOpen
+set completeopt=noinsert,menuone,noselect
 set autoread
 set clipboard^=unnamed,unnamedplus
 set noerrorbells visualbell t_vb= " No bells
@@ -267,13 +277,31 @@ nnoremap <leader>vs :syntax sync fromstart<CR>
 autocmd FileType javascript nnoremap <buffer> <C-]> :ImportJSGoto<CR>
 autocmd FileType javascript nnoremap <buffer> <C-t> :bprevious<CR>
 
-autocmd FileType typescript nnoremap <buffer> <C-]> :ImportJSGoto<CR>
-autocmd FileType typescript nnoremap <buffer> <C-t> :bprevious<CR>
+" autocmd FileType typescript nnoremap <buffer> <C-]> :ImportJSGoto<CR>
+" autocmd FileType typescript nnoremap <buffer> <C-t> :bprevious<CR>
 
 " }}}
 " ==============================================================================
 " PLUGINS {{{
 " ==============================================================================
+
+" ------------------------------------------------------------------------------
+" nvim-typescript
+" ------------------------------------------------------------------------------
+let g:nvim_typescript#default_mappings = 1
+let g:nvim_typescript#diagnostics_enable = 0
+" let g:nvim_typescript#type_info_on_hold = 1
+" let g:nvim_typescript#signature_complete = 1
+
+" ------------------------------------------------------------------------------
+" deoplete
+" ------------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
+" ------------------------------------------------------------------------------
+" ncm2
+" ------------------------------------------------------------------------------
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " ------------------------------------------------------------------------------
 " vimagit
@@ -466,15 +494,18 @@ nnoremap <Leader>ig :ImportJSGoto<CR>
 " ale
 " ----------------------------------------------------------------------------
 
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters_ignore = {'typescript': ['tslint']}
 let g:ale_linters = {
 \   'ruby': ['rubocop'],
-\   'javascript': ['eslint', 'flow']
+\   'javascript': ['eslint', 'flow'],
+\   'typescript': ['eslint', 'tsserver']
 \}
 let g:ale_fixers = {
 \   'typescript': [
-\       'tslint'
+\       'eslint',
+\       'prettier'
 \   ],
 \   'javascript': [
 \       'eslint',
@@ -512,7 +543,7 @@ let g:tern_map_keys = 1
 " ----------------------------------------------------------------------------
 " vim-javascript
 " ----------------------------------------------------------------------------
-let g:javascript_plugin_flow = 1
+" let g:javascript_plugin_flow = 1
 
 "if has('autocmd')
     "call jspretmpl#register_tag('gql', 'graphql')
