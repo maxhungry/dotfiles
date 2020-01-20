@@ -1,0 +1,28 @@
+set surround
+set commentary
+
+let mapleader = ' '
+let maplocalleader = ' '
+
+set incsearch  " Search as chars entered
+set ignorecase
+set smartcase  " Unless they contain at least one capital letter
+set hlsearch
+set clipboard^=unnamed,unnamedplus
+
+nnoremap coh :set hls!<cr>
+
+nnoremap <leader>s :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :qa!<cr>
+
+nnoremap [<space> <s-o><esc>
+nnoremap ]<space> o<esc>
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+nmap <silent> [g :tabprevious<CR>
+nmap <silent> ]g :tabnext<CR>
