@@ -2,6 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # export PATH="$HOME/.fastlane/bin:$PATH"
 # export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/lib"
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
@@ -15,12 +16,9 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export MANPAGER="nvim -c 'set ft=man' -"
 
-# react-native
-export ANDROID_HOME=$HOME/Library/Android/sdk
 case `uname -s` in
   Darwin)
     export TERM=screen-256color
-    export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
     ;;
   Linux)
     export TERM=xterm-256color

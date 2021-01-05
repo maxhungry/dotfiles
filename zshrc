@@ -2,7 +2,7 @@ ZSH_THEME="spaceship"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
-plugins=(git bundler z tmux)
+plugins=(git bundler z tmux git-flow)
 
 source $ZSH/oh-my-zsh.sh
 
