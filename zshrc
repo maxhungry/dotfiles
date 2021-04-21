@@ -2,7 +2,7 @@ ZSH_THEME="spaceship"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
-plugins=(git bundler z tmux git-flow)
+plugins=(git bundler z tmux git-flow git-hubflow kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,3 +59,6 @@ if [[ `uname -s` = "Linux" ]]; then
   export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
   export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
+
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
