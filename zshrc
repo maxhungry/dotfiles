@@ -31,12 +31,6 @@ eval "$(fasd --init auto)"
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Spaceship configs
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_RUBY_SYMBOL="●"
-SPACESHIP_NODE_SYMBOL="⬢"
-
 if [[ `uname -s` = "Darwin" ]]; then
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
@@ -60,5 +54,5 @@ if [[ `uname -s` = "Linux" ]]; then
   export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
 
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc

@@ -10,6 +10,9 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+export N_PREFIX=$HOME/n
+export PATH=$N_PREFIX/bin:$PATH
+
 export KEYTIMEOUT=1
 export CLICOLOR=1
 export VISUAL=nvim
