@@ -2,7 +2,9 @@ ZSH_THEME="spaceship"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
-plugins=(git bundler z tmux git-flow git-hubflow kubectl)
+SPACESHIP_VI_MODE_SHOW=false
+
+plugins=(git bundler z tmux git-flow git-hubflow kubectl docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,16 +45,16 @@ fi
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/maxhung/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/maxhung/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/completion.zsh.inc'; fi
-
 if [[ `uname -s` = "Linux" ]]; then
   export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
   export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fi
 
-# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# fpath=(~/.zsh/completions $fpath)
+autoload -Uz compinit && compinit
+
+if [ -f '/Users/maxhung/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/maxhung/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/completion.zsh.inc'; fi

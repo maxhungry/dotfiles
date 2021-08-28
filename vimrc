@@ -97,7 +97,7 @@ Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'w0rp/ale'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " Plug 'Quramy/tsuquyomi'
 
 " Colors/Others
