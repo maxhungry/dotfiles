@@ -30,3 +30,4 @@ export ANDROID_SDK=$HOME/android-sdk-macosx
 export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
 
 export GPG_TTY=$(tty)
+. "$HOME/.cargo/env"
