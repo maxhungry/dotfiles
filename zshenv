@@ -15,7 +15,7 @@ export KEYTIMEOUT=1
 export CLICOLOR=1
 export VISUAL=nvim
 export EDITOR=$VISUAL
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER='nvim +Man!'
 
 case `uname -s` in
   Darwin)
