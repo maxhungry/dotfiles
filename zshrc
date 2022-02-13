@@ -1,8 +1,11 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 ZSH_THEME="spaceship"
 HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$HOME/.omz-custom
 
 SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_GRADLE_SHOW=false
 
 plugins=(git bundler z tmux git-flow git-hubflow kubectl docker)
 
@@ -13,12 +16,12 @@ setopt NO_BEEP
 autoload -U colors # Enable color output
 colors
 
+bindkey -v
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
-bindkey -v
 
 # rbenv
 eval "$(rbenv init -)"
@@ -26,15 +29,12 @@ eval "$(rbenv init -)"
 # fasd
 eval "$(fasd --init auto)"
 
-# avn
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
-
 [ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ `uname -s` = "Darwin" ]]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 
@@ -53,8 +53,13 @@ fi
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
-# fpath=(~/.zsh/completions $fpath)
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
 
 if [ -f '/Users/maxhung/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/Users/maxhung/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/completion.zsh.inc'; fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
