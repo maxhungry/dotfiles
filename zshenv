@@ -7,6 +7,7 @@ export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
 
 export N_PREFIX=$HOME/n
 export PATH=$N_PREFIX/bin:$PATH

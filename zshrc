@@ -23,8 +23,8 @@ bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
 
-# rbenv
 eval "$(rbenv init -)"
+eval "$(pyenv init -)"
 
 # fasd
 eval "$(fasd --init auto)"
