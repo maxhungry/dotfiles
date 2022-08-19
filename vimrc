@@ -35,8 +35,8 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'galooshi/vim-import-js'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/denite.nvim'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/denite.nvim'
 " NCM2
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
@@ -48,7 +48,7 @@ Plug 'Shougo/denite.nvim'
 " Plug 'ncm2/ncm2-tern'
 " Plug 'ncm2/ncm2-cssomni'
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 
 " Interface/Display
 Plug 'airblade/vim-gitgutter'
@@ -126,6 +126,8 @@ call plug#end()
 " ==============================================================================
 let mapleader = ' '
 let maplocalleader = ' '
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 set textwidth=80
 set expandtab    " Always expand tabs to spaces
@@ -496,17 +498,12 @@ nnoremap <Leader>ig :ImportJSGoto<CR>
 
 " let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters_ignore = {'typescript': ['tslint']}
+" let g:ale_linters_ignore = {'typescript': ['tslint']}
 let g:ale_linters = {
 \   'ruby': ['rubocop'],
-\   'javascript': ['eslint', 'flow'],
-\   'typescript': ['eslint', 'tsserver']
+\   'javascript': ['eslint', 'flow']
 \}
 let g:ale_fixers = {
-\   'typescript': [
-\       'eslint',
-\       'prettier'
-\   ],
 \   'javascript': [
 \       'eslint',
 \       'prettier'
