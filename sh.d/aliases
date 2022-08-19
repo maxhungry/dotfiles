@@ -15,7 +15,6 @@ alias cp="cp -v"
 alias mux="tmuxinator"
 
 if [[ `uname -s` = "Darwin" ]]; then
-  alias git=hub
   alias ls="exa"
   alias cat="bat"
 fi
