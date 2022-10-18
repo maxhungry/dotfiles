@@ -71,3 +71,4 @@ function ghpr() {
     xargs gh pr checkout
 }
 
+. "$HOME/.cargo/env"
