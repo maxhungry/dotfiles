@@ -317,7 +317,7 @@ let g:magit_discard_untracked_do_delete=1
 nnoremap <Leader>gs  :tabedit %<CR>:Gstatus<CR>
 nnoremap <Leader>gdd :Git diff<CR>
 nnoremap <Leader>gdc :Gdiff<CR>
-nnoremap <Leader>gb  :Gblame<CR>
+nnoremap <Leader>gb  :Git blame<CR>
 nnoremap <Leader>ge  :Gedit<CR>
 nnoremap <Leader>gps :Dispatch! :Gpush<CR>
 nnoremap <Leader>gco :Git checkout
