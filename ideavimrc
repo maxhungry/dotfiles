@@ -1,15 +1,21 @@
+let mapleader = ' '
+let maplocalleader = ' '
+
 set surround
 set commentary
 set multiple-cursors
-
-let mapleader = ' '
-let maplocalleader = ' '
+set matchit
+set argtextobj
+set textobj-entire
 
 set incsearch  " Search as chars entered
 set ignorecase
 set smartcase  " Unless they contain at least one capital letter
 set hlsearch
 set clipboard^=unnamed,unnamedplus
+
+set showmode
+set nu
 
 nnoremap coh :set hls!<cr>
 
@@ -31,3 +37,11 @@ nmap <silent> [g :tabprevious<CR>
 nmap <silent> ]g :tabnext<CR>
 
 imap fd <Esc>
+
+map <leader>a <Action>(Annotate)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <S-Space> <Action>(GotoNextError)
+map <leader>s <Action>(SelectInProjectView)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
