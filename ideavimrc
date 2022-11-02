@@ -13,6 +13,7 @@ set ignorecase
 set smartcase  " Unless they contain at least one capital letter
 set hlsearch
 set clipboard^=unnamed,unnamedplus
+set relativenumber
 
 set showmode
 set nu
@@ -41,7 +42,8 @@ imap fd <Esc>
 map <leader>a <Action>(Annotate)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map <S-Space> <Action>(GotoNextError)
-map <leader>s <Action>(SelectInProjectView)
+map <leader>j <Action>(SelectInProjectView)
+map <leader>r <Action>(RenameElement)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
