@@ -33,6 +33,7 @@
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED
 [init]
   templatedir = ~/.git_template
+  defaultBranch = main
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
