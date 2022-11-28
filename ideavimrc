@@ -47,3 +47,7 @@ map <leader>r <Action>(RenameElement)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
+
+map <leader>k <Action>(ShowIntentionActions)
+map <leader>i <Action>(ReformatWithPrettierAction)
+map <leader>u <Action>(FindUsages)
