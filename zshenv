@@ -8,6 +8,7 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 export N_PREFIX=$HOME/n
 export PATH=$N_PREFIX/bin:$PATH
