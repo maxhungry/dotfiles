@@ -54,6 +54,7 @@ map <leader>I <Action>(QuickTypeDefinition)
 map <leader>, <Action>(ReformatWithPrettierAction)
 map <leader>u <Action>(FindUsages)
 map <leader>r <Action>(RunClass)
+map <leader>h <Action>(Vcs.ShowHistoryForBlock)
 
 map <leader>n <Action>(VcsShowNextChangeMarker)
 map <leader>p <Action>(VcsShowPrevChangeMarker)
