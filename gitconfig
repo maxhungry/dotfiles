@@ -47,6 +47,6 @@
   new = green bold
   whitespace = red reverse
 [commit]
-  # gpgSign = true
+  gpgSign = true
 [url "https://"]
 	insteadOf = git://
