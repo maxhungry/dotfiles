@@ -9,12 +9,26 @@ SPACESHIP_GRADLE_SHOW=false
 
 plugins=(git bundler z tmux git-flow git-hubflow kubectl docker)
 
-source $ZSH/oh-my-zsh.sh
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 
 unsetopt nomatch # Allow '[' and ']' for rake tasks
 setopt NO_BEEP
 autoload -U colors # Enable color output
 colors
+
+autoload -Uz compinit && compinit
+autoload bashcompinit && bashcompinit
+
+source $ZSH/oh-my-zsh.sh
+
+if [ -f $HOMEBREW_PREFIX/share/zsh/site-functions/aws_zsh_completer.sh ]
+then . $HOMEBREW_PREFIX/share/zsh/site-functions/aws_zsh_completer.sh
+fi
+
 
 bindkey -v
 bindkey "^A" beginning-of-line
@@ -23,11 +37,12 @@ bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
 bindkey "^R" history-incremental-search-backward
 
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
+# eval "$(rbenv init -)"
 
 # fasd
 eval "$(fasd --init auto)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 [ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
@@ -44,21 +59,6 @@ fi
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/maxhung/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
-
-if [[ `uname -s` = "Linux" ]]; then
-  export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-fi
-
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
-
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
-fpath=(~/.zsh/completions $fpath)
-autoload -Uz compinit && compinit
-
-if [ -f '/Users/maxhung/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/maxhung/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxhung/google-cloud-sdk/completion.zsh.inc'; fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

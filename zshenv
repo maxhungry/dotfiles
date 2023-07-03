@@ -6,18 +6,19 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PATH:$(go env GOPATH)/bin"
-
-export N_PREFIX=$HOME/n
-export PATH=$N_PREFIX/bin:$PATH
+export GOPATH=$HOME/go
+export GOROOT=$(go env GOROOT)
+export PATH="$PATH:$GOPATH/bin"
+export PATH="/Users/max.hung/.local/bin:$PATH"
 
 export KEYTIMEOUT=1
 export CLICOLOR=1
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export MANPAGER='nvim +Man!'
+export BAT_THEME='gruvbox-light'
 
 case `uname -s` in
   Darwin)
