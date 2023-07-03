@@ -51,6 +51,7 @@ map <leader>o <Action>(FileStructurePopup)
 map <leader>k <Action>(ShowIntentionActions)
 map <leader>i <Action>(QuickJavaDoc)
 map <leader>I <Action>(QuickTypeDefinition)
+map <leader>] <Action>(GotoImplementation)
 map <leader>, <Action>(ReformatWithPrettierAction)
 map <leader>u <Action>(FindUsages)
 map <leader>r <Action>(RunClass)
@@ -58,3 +59,5 @@ map <leader>h <Action>(Vcs.ShowHistoryForBlock)
 
 map <leader>n <Action>(VcsShowNextChangeMarker)
 map <leader>p <Action>(VcsShowPrevChangeMarker)
+
+map <leader>vo <Action>(OpenEditorInOppositeTabGroup)
