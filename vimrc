@@ -167,8 +167,9 @@ imap fd <Esc>
 
 colorscheme gruvbox
 let g:gruvbox_invert_selection=0
+let g:gruvbox_contrast_light='medium'
 
-set background=dark
+set background=light
 set termguicolors
 
 set laststatus=0

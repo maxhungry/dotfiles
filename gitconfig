@@ -35,10 +35,10 @@
   templatedir = ~/.git_template
   defaultBranch = main
 [color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
 [color "diff"]
   meta = yellow
   frag = magenta bold
@@ -50,3 +50,5 @@
   gpgSign = true
 [url "https://"]
 	insteadOf = git://
+[interactive]
+	diffFilter = diff-so-fancy --patch
