@@ -61,3 +61,5 @@ map <leader>n <Action>(VcsShowNextChangeMarker)
 map <leader>p <Action>(VcsShowPrevChangeMarker)
 
 map <leader>vo <Action>(OpenEditorInOppositeTabGroup)
+
+map <leader>e <Action>(ShowErrorDescription)
