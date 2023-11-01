@@ -42,7 +42,11 @@ bindkey "^R" history-incremental-search-backward
 # fasd
 eval "$(fasd --init auto)"
 
+# asdf + plugins setup
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+export ASDF_GOLANG_MOD_VERSION_ENABLED=false
+. ~/.asdf/plugins/golang/set-env.zsh
+
 
 [ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
@@ -72,3 +76,4 @@ function ghpr() {
 }
 
 . "$HOME/.cargo/env"
+
