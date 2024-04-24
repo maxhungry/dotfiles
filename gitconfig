@@ -7,7 +7,7 @@
   autocrlf = input
   editor = $EDITOR
   excludesfile = ~/.gitignore
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=4 -RF
 [alias]
   hist = log --pretty=format:\"%C(yellow)%h %C(reset)%ad | %C(blue)%s%d %C(reset)[%an]\" --graph --date=short
   type = cat-file -t

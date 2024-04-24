@@ -39,8 +39,7 @@ nmap <silent> ]g :tabnext<CR>
 
 imap fd <Esc>
 
-map <leader>a <Action>(Annotate)
-map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>z <Action>(MaximizeEditorInSplit)
 map <S-Space> <Action>(GotoNextError)
 map <leader>j <Action>(SelectInProjectView)
 map <leader>R <Action>(RenameElement)
@@ -48,18 +47,25 @@ map <leader>R <Action>(RenameElement)
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
 
+map <leader>] <Action>(GotoImplementation)
+map <leader>, <Action>(ReformatWithPrettierAction)
+map <leader>h <Action>(Vcs.ShowHistoryForBlock)
+
+map <leader>a <Action>(Annotate)
 map <leader>k <Action>(ShowIntentionActions)
 map <leader>i <Action>(QuickJavaDoc)
 map <leader>I <Action>(QuickTypeDefinition)
-map <leader>] <Action>(GotoImplementation)
-map <leader>, <Action>(ReformatWithPrettierAction)
 map <leader>u <Action>(FindUsages)
 map <leader>r <Action>(RunClass)
-map <leader>h <Action>(Vcs.ShowHistoryForBlock)
+map <leader>d <Action>(DebugClass)
 
-map <leader>n <Action>(VcsShowNextChangeMarker)
-map <leader>p <Action>(VcsShowPrevChangeMarker)
+" map <leader>n <Action>(VcsShowNextChangeMarker)
+" map <leader>p <Action>(VcsShowPrevChangeMarker)
 
 map <leader>vo <Action>(OpenEditorInOppositeTabGroup)
 
 map <leader>e <Action>(ShowErrorDescription)
+map <leader>T <Action>(GotoTest)
+
+map <leader>p <Action>(SearchEverywhere)
+map <leader>A <Action>(GotoAction)
