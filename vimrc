@@ -34,19 +34,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wesQ3/vim-windowswap'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'galooshi/vim-import-js'
-
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/denite.nvim'
-" NCM2
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-" " Plug 'ncm2/ncm2-match-highlight'
-" Plug 'ncm2/ncm2-ultisnips' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
-" Plug 'ncm2/ncm2-html-subscope'
-" Plug 'ncm2/ncm2-markdown-subscope'
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tern'
-" Plug 'ncm2/ncm2-cssomni'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-react-snippets'
 
@@ -82,21 +70,21 @@ Plug 'jreybert/vimagit'
 " Plug 'codegram/vim-codereview'
 
 " Lang/Syntax/Lint
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'ianks/vim-tsx'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jparise/vim-Graphql'
 Plug 'styled-components/vim-styled-components', { 'tag': 'v2.9' }
 Plug 'cfdrake/vim-pbxproj'
 Plug 'chrisbra/csv.vim'
-Plug 'elixir-lang/vim-elixir'
+" Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/vim-emoji'
 " Plug 'ngmy/vim-rubocop'
 Plug 'slashmili/alchemist.vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'tpope/vim-markdown'
 Plug 'vim-scripts/SyntaxRange'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " Plug 'Quramy/tsuquyomi'
 
@@ -126,8 +114,6 @@ call plug#end()
 " ==============================================================================
 let mapleader = ' '
 let maplocalleader = ' '
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 set textwidth=80
 set expandtab    " Always expand tabs to spaces
@@ -198,13 +184,8 @@ set foldlevelstart=99
 set nostartofline
 set history=10000
 
-if s:uname == "Darwin\n"
-  let g:python_host_prog = '/usr/local/bin/python'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-else
-  let g:python_host_prog = '/usr/bin/python'
-  let g:python3_host_prog = '/usr/bin/python3'
-endif
+let g:python_host_prog = '~/.asdf/shims/python'
+let g:python3_host_prog = '~/.asdf/shims/python3'
 
 " Spell check
 set spell spelllang=en_nz
