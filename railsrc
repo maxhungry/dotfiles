@@ -1,3 +1,2 @@
 -B # Skip Bundle
 -T # Skip Test-Unit
--d postgresql
