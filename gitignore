@@ -47,3 +47,8 @@ tags
 # tern #
 #########
 .tern-port
+
+# IDEs #
+########
+.vscode
+.idea
