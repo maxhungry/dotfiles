@@ -39,18 +39,12 @@ bindkey "^R" history-incremental-search-backward
 
 # eval "$(rbenv init -)"
 
-# fasd
-eval "$(fasd --init auto)"
+eval "$(mise activate zsh)"
 
-# asdf + plugins setup
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-export ASDF_GOLANG_MOD_VERSION_ENABLED=false
-. ~/.asdf/plugins/golang/set-env.zsh
-
+source <(fzf --zsh)
 
 [ -r ~/.sh.d/aliases ] && source ~/.sh.d/aliases
 [ -r ~/.sh.d/secrets ] && source ~/.sh.d/secrets
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ `uname -s` = "Darwin" ]]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -76,4 +70,3 @@ function ghpr() {
 }
 
 . "$HOME/.cargo/env"
-
