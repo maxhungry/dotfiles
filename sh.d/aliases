@@ -1,10 +1,8 @@
 #!/usr/bin/env zsh
 
 alias cask="brew cask"
-alias ember="./node_modules/.bin/ember"
 alias la="ls -a"
-alias rn="react-native"
-alias v=nvim
+v() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
 alias vr=vimr
 alias vim=nvim
 
@@ -14,7 +12,10 @@ alias cp="cp -v"
 
 alias mux="tmuxinator"
 
-if [[ `uname -s` = "Darwin" ]]; then
-  alias ls="exa"
+if command -v eza &>/dev/null; then
+  alias ls='eza -lh --group-directories-first --icons=auto'
+fi
+
+if command -v bat &>/dev/null; then
   alias cat="bat"
 fi

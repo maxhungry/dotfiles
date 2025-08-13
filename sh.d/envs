@@ -8,9 +8,6 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 
-export PATH="/Users/max.hung/.local/bin:$PATH"
-export PATH="$PATH:$HOMEBREW_PREFIX/anaconda3/bin"
-
 export KEYTIMEOUT=1
 export CLICOLOR=1
 export VISUAL=nvim
@@ -20,17 +17,15 @@ export BAT_THEME='gruvbox-light'
 
 case `uname -s` in
   Darwin)
+    export PATH="$HOME/.local/bin:$PATH"
+    export PATH="$PATH:$HOMEBREW_PREFIX/anaconda3/bin"
+    export HOMEBREW_NO_AUTO_UPDATE=1
     export TERM=screen-256color
+    export GPG_TTY=$(tty)
+    export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
+    export ANDROID_SDK=$HOME/android-sdk-macosx
     ;;
   Linux)
-    export TERM=xterm-256color
     export JAVA_HOME="/usr/local/android-studio/jre"
     ;;
 esac
-
-export ANDROID_SDK=$HOME/android-sdk-macosx
-export ANDROID_NDK=$HOME/android-ndk/android-ndk-r10e
-
-export GPG_TTY=$(tty)
-
-export HOMEBREW_NO_AUTO_UPDATE=1
