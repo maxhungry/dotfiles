@@ -1,0 +1,18 @@
+[user]
+	name = Max Hung
+	email = info@maxhung.co.nz
+  username = maxhungry
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII57GwaDC+53AWtFDKLAK53sHyOufUYHX9YijmPyPy09
+[init]
+	defaultBranch = master
+[pull]
+	rebase = true
+[push]
+  default = upstream
+  autoSetupRemote = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true
