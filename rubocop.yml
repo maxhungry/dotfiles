@@ -5,9 +5,3 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
-
-Metrics/LineLength:
-  Enabled: false
-
-Rails:
-  Enabled: true
