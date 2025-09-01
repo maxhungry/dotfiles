@@ -36,8 +36,8 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-nmap <silent> [g :tabprevious<CR>
-nmap <silent> ]g :tabnext<CR>
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
 
 imap fd <Esc>
 
