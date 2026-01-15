@@ -43,7 +43,7 @@ imap fd <Esc>
 
 map <leader>z <Action>(MaximizeEditorInSplit)
 map <S-Space> <Action>(GotoNextError)
-map <leader>j <Action>(SelectInProjectView)
+map <leader>e <Action>(SelectInProjectView)
 map <leader>R <Action>(RenameElement)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
@@ -66,8 +66,11 @@ map <leader>d <Action>(DebugClass)
 
 map <leader>vo <Action>(OpenEditorInOppositeTabGroup)
 
-map <leader>e <Action>(ShowErrorDescription)
+map <leader>d <Action>(ShowErrorDescription)
 map <leader>T <Action>(GotoTest)
 
 map <leader>p <Action>(SearchEverywhere)
 map <leader>A <Action>(GotoAction)
+
+map [h <Action>(VcsShowPrevChangeMarker)
+map ]h <Action>(VcsShowNextChangeMarker)
