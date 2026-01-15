@@ -52,3 +52,6 @@ tags
 ########
 .vscode
 .idea
+
+
+.claude/settings.local.json
