@@ -6,8 +6,8 @@ repo root (and under `config/` for `~/.config/`). OS and identity are tags.
 
 | Tag | When to enable |
 | --- | --- |
-| `linux` | Linux (Hyprland under `tag-linux/config/hypr`) |
-| `macos` | macOS (`xvimrc`, Oni, …) |
+| `linux` | Linux: Omarchy Hyprland, `shell.json`, herdr, Ghostty |
+| `macos` | macOS: Ghostty, `xvimrc`, Oni |
 | `hgws` | Personal git identity |
 | `work` | Work git identity, Brewfile, laptop.local |
 
