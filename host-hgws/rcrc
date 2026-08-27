@@ -1,0 +1,4 @@
+TAGS="linux hgws"
+# rcm matches this against the basename, so no README.md is linked into $HOME
+EXCLUDES="README.md"
+HOSTNAME="hgws"
